@@ -1,0 +1,37 @@
+name: Rebuild Marro Retention Report
+
+on:
+  schedule:
+    # Runs daily at 8am UK time (7am UTC in winter, adjust for BST)
+    - cron: '0 7 * * *'
+  workflow_dispatch: # Allow manual trigger from GitHub UI
+
+permissions:
+  contents: write
+
+jobs:
+  rebuild:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Build report
+        env:
+          GOOGLE_API_KEY: ${{ secrets.GOOGLE_API_KEY }}
+        run: python build.py
+
+      - name: Commit and push if changed
+        run: |
+          git config user.name "GitHub Actions Bot"
+          git config user.email "actions@github.com"
+          git add index.html
+          git diff --staged --quiet || (git commit -m "Auto-rebuild: $(date -u +'%Y-%m-%d %H:%M UTC')" && git push)
