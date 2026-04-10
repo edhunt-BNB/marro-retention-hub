@@ -906,7 +906,9 @@ document.querySelector('.sub-tab-btn[data-rep]')?.click();
                 table.querySelectorAll('tbody tr').forEach(row => {
                     const cells = row.querySelectorAll('td');
                     if (cells.length < 5) return;
-                    if (row.querySelector('.recording-cell')) return; // already added
+                    // Remove existing recording cell so it refreshes with latest data
+                    const existingCell = row.querySelector('.recording-cell');
+                    if (existingCell) existingCell.remove();
 
                     const customer = cells[0].textContent.trim();
                     const date = cells[1].textContent.trim();
