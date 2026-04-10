@@ -286,6 +286,43 @@ document.querySelectorAll('.box1tab-reason-btn').forEach(btn=>{
 });
 
 document.querySelector('.sub-tab-btn[data-rep]')?.click();
+
+// ====== RECORDING COLUMN ENHANCEMENT ======
+(function() {
+    const STORAGE_KEY = 'marro_recordings';
+    function loadRecordings() { try { return JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}'); } catch(e) { return {}; } }
+    function saveRecording(key, url) { const data = loadRecordings(); if (url) data[key] = url; else delete data[key]; localStorage.setItem(STORAGE_KEY, JSON.stringify(data)); }
+    function makeKey(rep, customer, date) { return (rep + '|' + customer + '|' + date).toLowerCase().replace(/\s+/g,'_'); }
+    function enhancePreboxTables() {
+        document.querySelectorAll('.data-table').forEach(table => {
+            const headers = table.querySelectorAll('th');
+            const ht = Array.from(headers).map(h => h.textContent.trim().toUpperCase());
+            if (ht.includes('CUSTOMER') && ht.includes('BOX 1 TO PAUSE') && ht.includes('SUB-REASON')) {
+                const repDiv = table.closest('.rep-content');
+                const rep = repDiv ? repDiv.id.replace('rep-','') : 'unknown';
+                const thead = table.querySelector('thead tr');
+                if (thead && !ht.includes('RECORDING')) { const th = document.createElement('th'); th.textContent = 'Recording'; th.style.minWidth = '180px'; thead.appendChild(th); }
+                const recordings = loadRecordings();
+                table.querySelectorAll('tbody tr').forEach(row => {
+                    const cells = row.querySelectorAll('td');
+                    if (cells.length < 5 || row.querySelector('.recording-cell')) return;
+                    const customer = cells[0].textContent.trim(), date = cells[1].textContent.trim();
+                    const key = makeKey(rep, customer, date), existing = recordings[key] || '';
+                    const td = document.createElement('td'); td.className = 'recording-cell'; td.style.padding = '6px 10px';
+                    if (existing) { td.innerHTML = `<a href="${existing}" target="_blank" style="color:#80020F;font-size:12px;text-decoration:underline;">🎧 Listen</a><button onclick="this.parentElement.innerHTML=createRecInput('${key}','${existing.replace(/'/g,"\\'")}');return false;" style="background:none;border:none;cursor:pointer;font-size:10px;color:#888;margin-left:4px;">✏️</button>`; }
+                    else { td.innerHTML = createRecInput(key, ''); }
+                    row.appendChild(td);
+                });
+            }
+        });
+    }
+    window.createRecInput = function(key, value) { return `<div style="display:flex;gap:4px;align-items:center;"><input type="text" placeholder="Paste URL..." value="${value}" style="font-size:11px;padding:4px 8px;border:1px solid #E2C5C5;border-radius:4px;width:140px;font-family:Georgia,serif;" onkeydown="if(event.key==='Enter'){saveRec(this,'${key}');}"><button onclick="saveRec(this.previousElementSibling,'${key}');" style="background:#80020F;color:#fff;border:none;border-radius:4px;padding:4px 8px;cursor:pointer;font-size:10px;">Save</button></div>`; };
+    window.saveRec = function(input, key) { const url = input.value.trim(); saveRecording(key, url); const td = input.closest('td'); if (url) { td.innerHTML = `<a href="${url}" target="_blank" style="color:#80020F;font-size:12px;text-decoration:underline;">🎧 Listen</a><button onclick="this.parentElement.innerHTML=createRecInput('${key}','${url.replace(/'/g,"\\'")}');return false;" style="background:none;border:none;cursor:pointer;font-size:10px;color:#888;margin-left:4px;">✏️</button>`; } };
+    enhancePreboxTables();
+    const observer = new MutationObserver(() => { setTimeout(enhancePreboxTables, 200); });
+    document.querySelectorAll('.rep-content').forEach(el => { observer.observe(el, { attributes: true, attributeFilter: ['style'] }); });
+    document.querySelectorAll('.sub-tab-btn[data-rep]').forEach(btn => { btn.addEventListener('click', () => { setTimeout(enhancePreboxTables, 300); }); });
+})();
 </script>
 </body>
 </html>

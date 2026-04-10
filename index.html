@@ -813,6 +813,164 @@ document.querySelectorAll('.box1tab-reason-btn').forEach(btn=>{
 });
 
 document.querySelector('.sub-tab-btn[data-rep]')?.click();
+
+// ====== RECORDING COLUMN ENHANCEMENT ======
+// Fetches recordings from shared Google Sheet "Recordings" tab
+// Falls back to localStorage for any locally-saved recordings
+(function() {
+    const STORAGE_KEY = 'marro_recordings';
+    const SHEET_ID = '17oI-NGxlePKRF2kuRdwSfK2l71oNGRVKnleWnLJGNZs';
+    const SHEET_GID = '1392238177'; // Recordings tab
+    const CSV_URL = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/export?format=csv&gid=${SHEET_GID}`;
+
+    let sheetRecordings = {};
+
+    // Fetch recordings from Google Sheets (shared across all users)
+    async function fetchSheetRecordings() {
+        try {
+            const resp = await fetch(CSV_URL);
+            if (!resp.ok) return;
+            const text = await resp.text();
+            const lines = text.split('\n');
+            // Header: Sales Rep, Customer, Created Date, Reason, Sub-Reason, Recording URL, Notes
+            for (let i = 1; i < lines.length; i++) {
+                const cols = parseCSVLine(lines[i]);
+                if (cols.length >= 6 && cols[5] && cols[5].trim()) {
+                    const key = makeKey(cols[0], cols[1], cols[2]);
+                    sheetRecordings[key] = cols[5].trim();
+                }
+            }
+            console.log(`Loaded ${Object.keys(sheetRecordings).length} recordings from Google Sheet`);
+            enhancePreboxTables(); // re-run after loading
+        } catch(e) {
+            console.log('Could not fetch sheet recordings, using localStorage only:', e.message);
+        }
+    }
+
+    // Simple CSV line parser (handles quoted fields)
+    function parseCSVLine(line) {
+        const result = [];
+        let current = '';
+        let inQuotes = false;
+        for (let i = 0; i < line.length; i++) {
+            const ch = line[i];
+            if (ch === '"') { inQuotes = !inQuotes; }
+            else if (ch === ',' && !inQuotes) { result.push(current); current = ''; }
+            else { current += ch; }
+        }
+        result.push(current);
+        return result;
+    }
+
+    function loadRecordings() {
+        // Merge: sheet recordings take priority, then localStorage
+        let local = {};
+        try { local = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}'); } catch(e) {}
+        return { ...local, ...sheetRecordings };
+    }
+
+    function saveRecording(key, url) {
+        const data = loadRecordings();
+        if (url) data[key] = url;
+        else delete data[key];
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+    }
+
+    function makeKey(rep, customer, date) {
+        return (rep + '|' + customer + '|' + date).toLowerCase().replace(/\s+/g,'_');
+    }
+
+    function enhancePreboxTables() {
+        // Find all pre-box tables by their header pattern
+        document.querySelectorAll('.data-table').forEach(table => {
+            const headers = table.querySelectorAll('th');
+            const headerTexts = Array.from(headers).map(h => h.textContent.trim().toUpperCase());
+
+            // Match pre-box tables: has Customer, Created Date, Box 1 to Pause, Reason, Sub-Reason
+            if (headerTexts.includes('CUSTOMER') && headerTexts.includes('BOX 1 TO PAUSE') && headerTexts.includes('SUB-REASON')) {
+                // Find which rep this belongs to
+                const repDiv = table.closest('.rep-content');
+                const rep = repDiv ? repDiv.id.replace('rep-','') : 'unknown';
+
+                // Add Recording header
+                const thead = table.querySelector('thead tr');
+                if (thead && !headerTexts.includes('RECORDING')) {
+                    const th = document.createElement('th');
+                    th.textContent = 'Recording';
+                    th.style.minWidth = '180px';
+                    thead.appendChild(th);
+                }
+
+                // Add recording cell to each body row
+                const recordings = loadRecordings();
+                table.querySelectorAll('tbody tr').forEach(row => {
+                    const cells = row.querySelectorAll('td');
+                    if (cells.length < 5) return;
+                    if (row.querySelector('.recording-cell')) return; // already added
+
+                    const customer = cells[0].textContent.trim();
+                    const date = cells[1].textContent.trim();
+                    const key = makeKey(rep, customer, date);
+                    const existing = recordings[key] || '';
+
+                    const td = document.createElement('td');
+                    td.className = 'recording-cell';
+                    td.style.padding = '6px 10px';
+
+                    if (existing) {
+                        td.innerHTML = `
+                            <a href="${existing}" target="_blank" style="color:#80020F;font-size:12px;text-decoration:underline;">🎧 Listen</a>
+                            <button onclick="this.parentElement.innerHTML=createRecInput('${key}','${existing.replace(/'/g,"\\'")}');return false;" style="background:none;border:none;cursor:pointer;font-size:10px;color:#888;margin-left:4px;" title="Edit">✏️</button>
+                        `;
+                    } else {
+                        td.innerHTML = createRecInput(key, '');
+                    }
+                    row.appendChild(td);
+                });
+            }
+        });
+    }
+
+    // Global function for creating input fields
+    window.createRecInput = function(key, value) {
+        return `<div style="display:flex;gap:4px;align-items:center;">
+            <input type="text" placeholder="Paste recording URL..." value="${value}"
+                style="font-size:11px;padding:4px 8px;border:1px solid #E2C5C5;border-radius:4px;width:140px;font-family:Georgia,serif;"
+                onkeydown="if(event.key==='Enter'){saveRec(this,'${key}');}">
+            <button onclick="saveRec(this.previousElementSibling,'${key}');"
+                style="background:#80020F;color:#fff;border:none;border-radius:4px;padding:4px 8px;cursor:pointer;font-size:10px;">Save</button>
+        </div>`;
+    };
+
+    window.saveRec = function(input, key) {
+        const url = input.value.trim();
+        saveRecording(key, url);
+        const td = input.closest('td');
+        if (url) {
+            td.innerHTML = `
+                <a href="${url}" target="_blank" style="color:#80020F;font-size:12px;text-decoration:underline;">🎧 Listen</a>
+                <button onclick="this.parentElement.innerHTML=createRecInput('${key}','${url.replace(/'/g,"\\'")}');return false;" style="background:none;border:none;cursor:pointer;font-size:10px;color:#888;margin-left:4px;" title="Edit">✏️</button>
+            `;
+        }
+    };
+
+    // Run on page load and when rep tabs are clicked
+    enhancePreboxTables();
+
+    // Re-run when rep tabs are shown (since content is hidden initially)
+    const observer = new MutationObserver(() => { setTimeout(enhancePreboxTables, 200); });
+    document.querySelectorAll('.rep-content').forEach(el => {
+        observer.observe(el, { attributes: true, attributeFilter: ['style'] });
+    });
+
+    // Also hook into rep button clicks
+    document.querySelectorAll('.sub-tab-btn[data-rep]').forEach(btn => {
+        btn.addEventListener('click', () => { setTimeout(enhancePreboxTables, 300); });
+    });
+
+    // Fetch shared recordings from Google Sheet on page load
+    fetchSheetRecordings();
+})();
 </script>
 </body>
 </html>
