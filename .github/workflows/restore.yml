@@ -4,11 +4,15 @@ on:
   push:
     paths:
       - '.github/workflows/restore.yml'
+permissions:
+  contents: write
 jobs:
   restore:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
       - name: Download fixed dashboard
         run: curl -sL 'https://pub.hyperagent.com/p/DuA_Uhitjgf277ea3DaT0w' -o index.html
       - name: Verify file
