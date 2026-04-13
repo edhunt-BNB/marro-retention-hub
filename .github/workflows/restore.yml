@@ -1,0 +1,25 @@
+name: Restore Dashboard
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - '.github/workflows/restore.yml'
+jobs:
+  restore:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Download fixed dashboard
+        run: curl -sL 'https://pub.hyperagent.com/p/DuA_Uhitjgf277ea3DaT0w' -o index.html
+      - name: Verify file
+        run: |
+          grep -q 'MARRO RETENTION DEEP DIVE' index.html
+          test $(wc -c < index.html) -gt 60000
+          echo 'File verified OK'
+      - name: Commit and push
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add index.html
+          git diff --cached --quiet || git commit -m 'Restore full dashboard with normalizeDate fix'
+          git push
