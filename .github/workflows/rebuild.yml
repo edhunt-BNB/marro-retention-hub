@@ -1,6 +1,0 @@
-# DISABLED - old build.py generates outdated dashboard
-# The index.html is now maintained directly via the restore.yml workflow
-# Do not re-enable without updating build.py
-name: Rebuild Marro Retention Report (DISABLED)
-on:
-  workflow_dispatch:
