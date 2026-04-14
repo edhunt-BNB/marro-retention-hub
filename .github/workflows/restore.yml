@@ -20,14 +20,15 @@ jobs:
           grep -q 'MARRO RETENTION DEEP DIVE' index.html
           grep -q 'getUTCHours()>=23' index.html
           grep -q 'normalizeDate' index.html
+          grep -q 'renderRepDive' index.html
           SIZE=$(wc -c < index.html)
           echo "File size: $SIZE bytes"
           test $SIZE -gt 60000
-          echo 'ALL CHECKS PASS - threshold is >=23'
+          echo 'ALL CHECKS PASS'
       - name: Commit and push
         run: |
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
           git add index.html
-          git diff --cached --quiet || git commit -m 'Fix: normalizeDate >=23 threshold for correct Mon-Sun week boundaries'
+          git diff --cached --quiet || git commit -m 'Restore dashboard with >=23 fix, 4 tabs, sidebar nav'
           git push
