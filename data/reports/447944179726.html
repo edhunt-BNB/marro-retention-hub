@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>QA Report - Rachel McOwat</title>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&display=swap" rel="stylesheet">
+  <script type="application/json" id="report-data">
+  {
+    "customer": "Rachel McOwat",
+    "phone": "+447944179726",
+    "rep": "Meryl",
+    "rep_data": "Franco",
+    "pause_date": "2026-04-06",
+    "b1p_days": -1,
+    "b1p_category": "Critical",
+    "pause_reason": "do_not_want_subscription",
+    "sub_reason": "",
+    "overall_score": 7.2,
+    "sections": {
+      "global_metrics": 8,
+      "introduction": 6,
+      "discovery": 6,
+      "the_fix": 6,
+      "the_pitch": 5,
+      "product_precision": 6,
+      "price_transformation": 8,
+      "clarity_close": 9,
+      "negative_markers": 7,
+      "human_element": 7
+    },
+    "hard_fails": [],
+    "checklist": {
+      "missing_need": "PASS",
+      "boredom": "N/A",
+      "flow_issue": "PASS"
+    },
+    "generated": "2026-04-15"
+  }
+  </script>
+  <style>
+    :root{--mr-amber:#E9B377;--mr-amber-dark:#D69042;--mr-gold:#F5A50D;--mr-burgundy:#451219;--mr-black:#240205;--mr-crimson:#96061C;--mr-blush:#F6DDDD;--mr-pink-pale:#F6ECEC;--mr-bg-light:#FDF9F9;--mr-rose-muted:#816165;--mr-success:#51BC51;--mr-error:#E92A00}
+    *{margin:0;padding:0;box-sizing:border-box}
+    body{font-family:'Bricolage Grotesque',sans-serif;background:var(--mr-bg-light);color:var(--mr-black);line-height:1.6;padding:2rem;max-width:900px;margin:0 auto}
+    h1{color:var(--mr-burgundy);font-size:1.8rem;font-weight:800}h2{color:var(--mr-burgundy);font-size:1.3rem;font-weight:700;margin:1.5rem 0 .75rem;padding-bottom:.5rem;border-bottom:2px solid var(--mr-blush)}h3{color:var(--mr-burgundy);font-size:1.1rem;font-weight:600;margin:1rem 0 .5rem}
+    .header{background:var(--mr-burgundy);color:#fff;padding:1.5rem 2rem;border-radius:8px;margin-bottom:1.5rem;position:relative}.header h1{color:#fff}.meta{display:flex;gap:1.5rem;flex-wrap:wrap;margin-top:.75rem;font-size:.9rem;opacity:.9}
+    .badge{display:inline-block;padding:.25rem .75rem;border-radius:999px;font-size:.8rem;font-weight:600}.badge-critical{background:var(--mr-error);color:#fff}.badge-danger{background:var(--mr-amber-dark);color:#fff}
+    .overall-score{font-size:3rem;font-weight:800;margin-top:.5rem}
+    .btn-pdf{position:absolute;top:1.5rem;right:2rem;background:var(--mr-amber);color:var(--mr-burgundy);border:none;padding:.5rem 1.25rem;border-radius:8px;font-family:inherit;font-size:.85rem;font-weight:600;cursor:pointer}.btn-pdf:hover{background:var(--mr-amber-dark);color:#fff}
+    .card{background:#fff;border-radius:8px;padding:1.25rem;margin-bottom:1rem;box-shadow:0 2px 8px rgba(69,18,25,.06)}.card-alert{border-left:4px solid var(--mr-error);background:#fff5f5}.card-pause{border-left:4px solid var(--mr-amber-dark)}
+    .score-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:.75rem}.score-item{background:#fff;border-radius:8px;padding:1rem;box-shadow:0 1px 4px rgba(69,18,25,.05)}.score-num{font-size:1.5rem;font-weight:700}
+    .score-low{color:var(--mr-error)}.score-mid{color:var(--mr-amber-dark)}.score-ok{color:var(--mr-rose-muted)}.score-good{color:var(--mr-success)}.score-great{color:var(--mr-gold)}
+    .strength{color:var(--mr-success);font-weight:500}.weakness{color:var(--mr-error);font-weight:500}
+    .quote{background:var(--mr-pink-pale);border-left:3px solid var(--mr-amber);padding:.75rem 1rem;margin:.5rem 0;border-radius:0 4px 4px 0;font-style:italic;font-size:.9rem}.quote .ts{font-weight:600;font-style:normal;color:var(--mr-burgundy)}
+    .focus{background:var(--mr-blush);border-radius:8px;padding:1rem;margin-bottom:.75rem}
+    .pause-data{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin:1rem 0}.pause-stat{background:var(--mr-pink-pale);border-radius:8px;padding:1rem;text-align:center}.pause-stat .label{font-size:.75rem;font-weight:600;color:var(--mr-rose-muted);text-transform:uppercase;letter-spacing:.05em}.pause-stat .value{font-size:1rem;font-weight:700;color:var(--mr-burgundy);margin-top:.25rem}
+    .checklist-pass{color:var(--mr-success);margin:.5rem 0}.checklist-fail{color:var(--mr-error);margin:.5rem 0}
+    @media print{.btn-pdf{display:none}body{padding:1rem;max-width:100%}.header{break-after:avoid}}
+  </style>
+</head>
+<body>
+  <div class="header">
+    <h1>Call QA Report</h1>
+    <button class="btn-pdf" onclick="window.print()">Download PDF</button>
+    <div class="meta">
+      <span>Customer: Rachel McOwat</span>
+      <span>Rep: Meryl</span>
+      <span>Date: 06/04/26</span>
+      <span class="badge badge-critical">Critical (B1P: -1)</span>
+    </div>
+    <div class="overall-score">7.2/10</div>
+  </div>
+
+  <div class="card">
+    <h2>Executive Summary</h2>
+    <p>This was a well-structured, warm call from Meryl with strong close mechanics. She asked a Brand Knowledge Check question, explained the product clearly, built genuine rapport (the cat-named-Dave anecdote), and delivered one of the best close sequences seen -- mentioning the transition guide proactively, giving the customer service number, and setting outcome expectations (shinier coat, better litter tray). Despite scoring 7.2/10, <strong>Rachel cancelled before receiving her first box</strong> (B1P: -1, Critical). The pause reason -- "do not want subscription" -- suggests buyer's remorse or subscription anxiety that the call didn't fully inoculate against.</p>
+    <p><strong>Priority coaching point:</strong> For passive/agreeable customers, test commitment before closing. An easy "yes" on the phone doesn't mean conviction.</p>
+  </div>
+
+  <h2>Section Scores</h2>
+  <div class="score-grid">
+    <div class="score-item"><div class="score-num score-good">8</div><h3>1. Global Metrics</h3><p>Excellent rapport. "Bruno" used frequently. Cat-named-Dave joke built genuine connection.</p></div>
+    <div class="score-item"><div class="score-num score-ok">6</div><h3>2. Introduction</h3><p>Name stated but brand "Marro" not clearly stated in first 10 seconds. "Good news" used.</p></div>
+    <div class="score-item"><div class="score-num score-ok">6</div><h3>3. Discovery</h3><p>Brand Knowledge Check done (00:42). Limited nugget -- healthy kitten, no issues to extract.</p></div>
+    <div class="score-item"><div class="score-num score-ok">6</div><h3>4. The Fix</h3><p>Appropriate "no issues" pitch. Supermarket comparison (4% vs 85-90% meat). No breed-specific needed.</p></div>
+    <div class="score-item"><div class="score-num score-mid">5</div><h3>5. The Pitch</h3><p>No visual anchors or real-world size comparisons. Generic quality pitch.</p></div>
+    <div class="score-item"><div class="score-num score-ok">6</div><h3>6. Product Precision</h3><p>"Two meals a day for two weeks" -- correct for kitten. Terminology could be more precise.</p></div>
+    <div class="score-item"><div class="score-num score-good">8</div><h3>7. Price &amp; Transformation</h3><p>Full journey: taster (15.50), revised lower (12.11), ongoing (28/month). Weekly anchor given.</p></div>
+    <div class="score-item"><div class="score-num score-good">9</div><h3>8. Clarity &amp; Close</h3><p>Outstanding. Transition guide mentioned proactively, CS number given, referral scheme, outcome expectations set.</p></div>
+    <div class="score-item"><div class="score-num score-good">7</div><h3>9. Negative Markers</h3><p>Price at 02:26 -- borderline early but after product explanation. Minor info sequencing.</p></div>
+    <div class="score-item"><div class="score-num score-good">7</div><h3>10. Human Element</h3><p>Good engagement with new kitten context. Zoomies joke. Transition guide sets expectations well.</p></div>
+  </div>
+
+  <h2>Detailed Analysis</h2>
+
+  <h3>1. Global Metrics (8/10)</h3>
+  <p class="strength">Strengths: Exceptional rapport. The cat-named-Dave anecdote (03:27) is a masterclass in humanising the call. "Bruno" used throughout all phases. "Do the zoomies in the middle of the night?" (04:09) builds genuine connection.</p>
+  <p class="weakness">Weaknesses: One stretch at (01:02-01:43) runs ~41 seconds -- close to the Robot Rule threshold but technically under.</p>
+
+  <h3>2. Introduction (6/10)</h3>
+  <p class="strength">Strengths: "Good news" (00:42) is hero language. References the survey and Bruno immediately.</p>
+  <p class="weakness">Weaknesses: "It's Meryl. Just a quick call about the survey you completed to get some cat food for Bruno" (00:05) -- she says her name but does NOT say "Marro" in the first 10 seconds. Later says "Barrow" (00:42) which appears to be a mispronunciation. Brand anchor is weak.</p>
+
+  <h3>3. Discovery (6/10)</h3>
+  <p class="strength">Strengths: "Do you know much about what we do here?" (00:42) -- Brand Knowledge Check done. Asked about fussiness (00:18, 04:22), allergies (04:36), health (01:52).</p>
+  <p class="weakness">Weaknesses: Customer is a new kitten owner with a healthy, non-fussy cat. Limited nugget to extract. The "curiosity" motivation (new kitten, wants the best) was identified but not deeply explored.</p>
+
+  <h3>7. Price &amp; Transformation (8/10)</h3>
+  <p class="strength">Strengths: Excellent Journey Sequence. Initial price (15.50 at 02:26), then a delightful "even better news" moment when the tailored price came in lower (12.11 at 06:36). Ongoing monthly clearly stated (28 at 08:24). Weekly anchors given. Referral scheme adds value (08:42).</p>
+  <div class="quote"><span class="ts">(06:33)</span> "Even better news. I know I said 15.50 for two weeks, but I've put in all of Bruno's information, and it comes in cheaper at 12.11." -- Great technique. The customer feels they're getting a personalised deal.</div>
+
+  <h3>8. Clarity &amp; Close (9/10)</h3>
+  <p class="strength">Strengths: Best close sequence of the three calls analysed. Mentions transition guide proactively (09:34), gives customer service number (09:58), sets tangible outcome expectations -- "Bruno's coat will become shinier, but also his poo won't smell as bad" (10:10). Personal story about her own cat's transition (10:24). Shows the customer around the account (10:26+). Recipe management explained.</p>
+  <div class="quote"><span class="ts">(09:34)</span> "In box number one, you will receive a transition guide. Super important. It will show you exactly how to introduce Marrow in a way that works for Bruno's system and habits."</div>
+  <div class="quote"><span class="ts">(10:24)</span> "With my cat, it took him a couple of days to get into it... he was addicted to the sugars in whiskers. But all I did was follow the transition guide, and he got there." -- Personal credibility. Powerful.</div>
+
+  <h2>Top 3 Focus Areas</h2>
+  <div class="focus">
+    <h3>1. Test Commitment Before Closing</h3>
+    <p><strong>Issue:</strong> Rachel agreed to everything easily but cancelled before the box arrived. Her responses were short ("yeah", "sounds good", "I think so") -- classic passive agreement rather than genuine conviction.</p>
+    <p><strong>Target:</strong> For agreeable/passive customers, test commitment: "Just so I know we're on the same page -- what's the main reason you're excited to try this for Bruno?" If they can't articulate it, the commitment is shallow.</p>
+    <p><strong>Coaching:</strong> The easier the sale, the higher the cancellation risk. Meryl should have noticed Rachel's passivity and invested more in building emotional commitment before taking payment.</p>
+  </div>
+  <div class="focus">
+    <h3>2. Brand Anchor in First 10 Seconds</h3>
+    <p><strong>Issue:</strong> "Marro" was not clearly stated in the opening. "Barrow" at (00:42) appears to be a mispronunciation.</p>
+    <p><strong>Target:</strong> "Hi Rachel, it's Meryl calling from Marro, the fresh cat food company." Clear, confident, within 10 seconds.</p>
+    <p><strong>Coaching:</strong> Practice the brand name. If the customer doesn't recognise the brand, they can't recall it later when deciding whether to keep the subscription.</p>
+  </div>
+  <div class="focus">
+    <h3>3. Visual Anchors in the Pitch</h3>
+    <p><strong>Issue:</strong> No real-world size comparisons for the product. Customer has no mental picture of what arrives.</p>
+    <p><strong>Target:</strong> "Each pouch is about the size of a phone" or "the box fits in the fridge door" -- something concrete.</p>
+    <p><strong>Coaching:</strong> When the customer can visualise the product in their home, they feel more committed to receiving it. Abstract descriptions make it easy to cancel sight-unseen.</p>
+  </div>
+
+  <h2>Pause Reason Analysis</h2>
+  <div class="pause-data">
+    <div class="pause-stat"><div class="label">Pause Reason</div><div class="value">Do Not Want Subscription</div></div>
+    <div class="pause-stat"><div class="label">Sub Reason</div><div class="value">N/A</div></div>
+    <div class="pause-stat"><div class="label">B1P</div><div class="value"><span class="badge badge-critical">Critical</span> -1 days</div></div>
+  </div>
+
+  <div class="card card-pause">
+    <h3>What Happened</h3>
+    <p>Rachel cancelled her subscription <strong>before her first box was even delivered</strong> (B1P: -1). She completed the call, paid via Apple Pay, and then paused the plan before the Tuesday delivery date. The reason -- "do not want subscription" -- with no sub-reason points to pure buyer's remorse or subscription anxiety. This was not a product rejection (she never received the product). This was a commitment rejection.</p>
+    <p>A B1P of -1 (Critical) is the most frustrating pause category because it represents a fully completed sale that evaporated before any product experience. The customer never gave Marro a chance.</p>
+  </div>
+
+  <div class="card card-pause">
+    <h3>The Transcript Connection</h3>
+    <p>The call itself scored 7.2/10 -- one of the stronger performances. But several signals foreshadowed the cancellation:</p>
+    <div class="quote"><span class="ts">(02:41)</span> "Is it something you'd like to try out?" -- "I think so. Yeah." -- Note: "I think so" is hedging language. Not "Yes, definitely" or "Absolutely." This is a soft commitment signal the rep didn't catch.</div>
+    <div class="quote"><span class="ts">(00:03)</span> "Hi there again. I'm calling back." -- Rachel appears to have been called before, possibly by a different rep (data shows Franco as original rep). Multiple call attempts can create pressure to say yes rather than genuine interest.</div>
+    <p>Rachel was a <strong>passive buyer</strong>. Her responses throughout were short affirmatives ("yeah", "mhmm", "sounds good") with no self-initiated enthusiasm. She never asked a question about the product unprompted. This pattern -- compliance without conviction -- is the highest-risk profile for pre-delivery cancellation.</p>
+  </div>
+
+  <div class="card card-pause">
+    <h3>What Should Have Happened</h3>
+    <p>Meryl's close was excellent in mechanics (transition guide, CS number, outcome expectations). But for a passive customer, mechanics aren't enough. The missing piece was a <strong>commitment test</strong>:</p>
+    <p><strong>After payment:</strong> "Rachel, I'm really excited for Bruno to try this. Quick question -- what's the one thing you're most looking forward to seeing when he starts on fresh food?" If Rachel can articulate a specific hope ("shinier coat", "better digestion"), she's committed. If she says "I don't know" or gives a vague answer, she's at risk of cancelling.</p>
+    <p><strong>Setting a personal stake:</strong> "When the box arrives on Tuesday, try warming the first pouch slightly in the microwave -- Bruno will love the smell. That's your homework for Tuesday!" This creates a specific action tied to a specific day, making the delivery feel like an event rather than an unwanted parcel.</p>
+  </div>
+
+  <div class="card card-pause">
+    <h3>Retention Impact Assessment</h3>
+    <p><strong>Preventability: MODERATE.</strong> Pre-delivery cancellations from passive buyers are among the hardest to prevent because the decision happens after the call, in the customer's own head, without any product experience to anchor against. However, a commitment test during the call would have either (a) strengthened Rachel's resolve or (b) flagged her as at-risk, allowing for a follow-up text before delivery.</p>
+    <p><strong>Pattern risk:</strong> "Do not want subscription" with B1P -1 often signals customers who were sold to rather than sold on the idea. If this pattern repeats across multiple reps, it may indicate systemic over-selling to passive leads. Worth monitoring.</p>
+    <p><strong>Recovery potential: LOW.</strong> Rachel actively chose to cancel before receiving the product. She didn't have a bad experience -- she had second thoughts. Re-engagement would require a fundamentally different approach (e.g., a free no-strings sample rather than a subscription pitch).</p>
+    <p><strong>Note:</strong> The data shows "Franco" as the sales rep, but the call was conducted by Meryl. This may indicate the lead was originally assigned to Franco and reassigned, or this was a callback on a lead Franco couldn't close. The multiple-contact pattern may have contributed to compliance-based agreement.</p>
+  </div>
+
+  <h2>Final Performance Checklist</h2>
+  <p class="checklist-pass"><strong>1. The "Missing Need" Miss: PASS</strong> -- No strong needs were volunteered (healthy kitten, no issues). Rep appropriately asked about allergies, health, and fussiness. Limited nugget available.</p>
+  <p class="checklist-pass"><strong>2. The "Boredom" Miss: N/A</strong> -- No boredom or fussiness detected.</p>
+  <p class="checklist-pass"><strong>3. The Flow Issue: PASS</strong> -- Discovery-Fix-Price sequence followed. Product explanation before price. Transition guide before delivery.</p>
+
+  <p style="margin-top:2rem;font-size:.8rem;color:var(--mr-rose-muted)">Generated by Marro Call QA Agent | 2026-04-15</p>
+</body>
+</html>
