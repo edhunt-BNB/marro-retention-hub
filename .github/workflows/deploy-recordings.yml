@@ -1,6 +1,8 @@
 name: Deploy Recordings Loading Code
 on:
-  workflow_dispatch:
+  push:
+    paths:
+      - '.github/workflows/deploy-recordings.yml'
 jobs:
   deploy:
     runs-on: ubuntu-latest
