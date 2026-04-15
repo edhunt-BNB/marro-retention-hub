@@ -1,1 +1,166 @@
-µë-
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>QA Report - Philip Bodman</title>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --mr-amber:#E9B377;--mr-amber-dark:#D69042;--mr-gold:#F5A50D;
+      --mr-burgundy:#451219;--mr-black:#240205;--mr-crimson:#96061C;
+      --mr-blush:#F6DDDD;--mr-pink-pale:#F6ECEC;--mr-bg-light:#FDF9F9;
+      --mr-rose-muted:#816165;--mr-success:#51BC51;--mr-error:#E92A00;
+    }
+    *{margin:0;padding:0;box-sizing:border-box}
+    body{font-family:'Bricolage Grotesque',sans-serif;background:var(--mr-bg-light);color:var(--mr-black);line-height:1.6;padding:2rem;max-width:900px;margin:0 auto}
+    h1{color:var(--mr-burgundy);font-size:1.8rem;font-weight:800}
+    h2{color:var(--mr-burgundy);font-size:1.3rem;font-weight:700;margin:1.5rem 0 0.75rem;padding-bottom:0.5rem;border-bottom:2px solid var(--mr-blush)}
+    h3{color:var(--mr-burgundy);font-size:1.1rem;font-weight:600;margin:1rem 0 0.5rem}
+    .header{background:var(--mr-burgundy);color:#fff;padding:1.5rem 2rem;border-radius:8px;margin-bottom:1.5rem}
+    .header h1{color:#fff}
+    .meta{display:flex;gap:1.5rem;flex-wrap:wrap;margin-top:0.75rem;font-size:0.9rem;opacity:0.9}
+    .badge{display:inline-block;padding:0.25rem 0.75rem;border-radius:999px;font-size:0.8rem;font-weight:600}
+    .badge-critical{background:var(--mr-error);color:#fff}
+    .badge-danger{background:var(--mr-amber-dark);color:#fff}
+    .badge-likely{background:var(--mr-amber);color:var(--mr-burgundy)}
+    .badge-review{background:var(--mr-rose-muted);color:#fff}
+    .overall-score{font-size:3rem;font-weight:800;margin-top:0.5rem}
+    .card{background:#fff;border-radius:8px;padding:1.25rem;margin-bottom:1rem;box-shadow:0 2px 8px rgba(69,18,25,0.06)}
+    .card-alert{border-left:4px solid var(--mr-error);background:#fff5f5}
+    .score-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:0.75rem}
+    .score-item{background:#fff;border-radius:8px;padding:1rem;box-shadow:0 1px 4px rgba(69,18,25,0.05)}
+    .score-num{font-size:1.5rem;font-weight:700}
+    .score-low{color:var(--mr-error)}.score-mid{color:var(--mr-amber-dark)}.score-ok{color:var(--mr-rose-muted)}.score-good{color:var(--mr-success)}.score-great{color:var(--mr-gold)}
+    .strength{color:var(--mr-success);font-weight:500}
+    .weakness{color:var(--mr-error);font-weight:500}
+    .quote{background:var(--mr-pink-pale);border-left:3px solid var(--mr-amber);padding:0.75rem 1rem;margin:0.5rem 0;border-radius:0 4px 4px 0;font-style:italic;font-size:0.9rem}
+    .quote .ts{font-weight:600;font-style:normal;color:var(--mr-burgundy)}
+    .focus{background:var(--mr-blush);border-radius:8px;padding:1rem;margin-bottom:0.75rem}
+    .checklist-pass{color:var(--mr-success);margin:0.5rem 0}
+    .checklist-fail{color:var(--mr-error);margin:0.5rem 0}
+    .context-table{width:100%;border-collapse:collapse;margin-top:0.5rem}
+    .context-table th{text-align:left;font-weight:600;padding:0.5rem;border-bottom:2px solid var(--mr-burgundy);color:var(--mr-burgundy)}
+    .context-table td{padding:0.5rem;border-bottom:1px solid var(--mr-blush)}
+    @media print{body{padding:1rem;max-width:100%}.header{break-after:avoid}}
+  </style>
+</head>
+<body>
+  <div class="header">
+    <h1>Call QA Report</h1>
+    <div class="meta">
+      <span>Customer: Philip Bodman</span>
+      <span>Rep: Charlene</span>
+      <span>Date: 11/04/26</span>
+      <span class="badge badge-danger">Danger (B1P: 2)</span>
+    </div>
+    <div class="overall-score">4.6/10</div>
+  </div>
+
+  <div class="card">
+    <h2>Executive Summary</h2>
+    <p>Charlene secured the sale but through a heavily transactional approach. Price was revealed at just 1 minute 11 seconds into the call with virtually no discovery or needs identification. The customer (Philip) volunteered key information about his cats' fussiness and food boredom, but these pain points were never used to build the value case before the price reveal.</p>
+    <p><strong>Priority coaching point:</strong> The price came 10+ minutes too early. Build the Discovery-Fix-Pitch sequence BEFORE revealing any numbers.</p>
+  </div>
+
+  <div class="card card-alert">
+    <h2>HARD FAILs Triggered</h2>
+    <h3>Section 7.1: Journey Sequence (Borderline)</h3>
+    <p>Taster price (01:11) and ongoing cost (01:52) stated, but daily cost anchor calculated by the CUSTOMER ("60p a meal" at 01:57), not the rep.</p>
+    <h3>Section 9: Price Too Early</h3>
+    <p>Price stated at (01:11) within the first 75 seconds. No discovery, no fix, no value built before the number landed.</p>
+  </div>
+
+  <h2>Section Scores</h2>
+  <div class="score-grid">
+    <div class="score-item"><div class="score-num score-ok">6</div><h3>1. Global Metrics</h3><p>Good energy and warmth, but a 68-second monologue flagged at (11:34).</p></div>
+    <div class="score-item"><div class="score-num score-good">7</div><h3>2. Introduction</h3><p>Name + Brand + Pet name in first 14 seconds. No apology. Hero language weak.</p></div>
+    <div class="score-item"><div class="score-num score-mid">4</div><h3>3. Discovery</h3><p>No brand knowledge check. Customer named brands but no probing action followed.</p></div>
+    <div class="score-item"><div class="score-num score-mid">4</div><h3>4. The Fix</h3><p>Features pitched generically. Fussiness/boredom not matched to specific solutions.</p></div>
+    <div class="score-item"><div class="score-num score-mid">4</div><h3>5. The Pitch</h3><p>No real-world size comparisons. Fix not connected back to Discovery nuggets.</p></div>
+    <div class="score-item"><div class="score-num score-mid">4</div><h3>6. Product Precision</h3><p>Said "14 meals" not "14 pouches." Multi-cat discount not framed as permanent.</p></div>
+    <div class="score-item"><div class="score-num score-mid">5</div><h3>7. Price &amp; Transformation</h3><p>Taster + ongoing stated, but customer calculated the daily cost, not the rep.</p></div>
+    <div class="score-item"><div class="score-num score-ok">6</div><h3>8. Clarity &amp; Close</h3><p>Box 2 transparency good. No "To-Do" homework assigned.</p></div>
+    <div class="score-item"><div class="score-num score-low">3</div><h3>9. Negative Markers</h3><p>Price at 01:11 (too early), Logic Leap, info dumping post-payment.</p></div>
+    <div class="score-item"><div class="score-num score-low">3</div><h3>10. Human Element</h3><p>Price before discovery = did not earn the price. Fussiness not solved with variety.</p></div>
+  </div>
+
+  <h2>Detailed Analysis</h2>
+
+  <h3>1. Global Metrics (6/10)</h3>
+  <p class="strength">Strengths: Warm and personable tone throughout. Natural rapport with Philip.</p>
+  <p class="weakness">Weaknesses: 68-second monologue at (11:34) violates the 45-Second Robot Rule. Pet name "Ronnie" used ~5 times, passes threshold but underused in pitch/price sections.</p>
+  <div class="quote"><span class="ts">(11:34-12:16)</span> "So your box is scheduled to arrive on Thursday... There's no contract commitment." -- Continuous explanation without checking in.</div>
+
+  <h3>2. Introduction (7/10)</h3>
+  <p class="strength">Strengths: "This is Charlene... from Marrow, the Fresh Cat Food Company" (00:08) -- Name + Brand within 10 seconds. References "Ronnie" and survey immediately. No Apology Rule passed.</p>
+  <p class="weakness">Weaknesses: "Massive discount" (00:55) is offer language, not win language. No hero language ("Good news" / "Gift").</p>
+
+  <h3>3. Discovery &amp; Connection (4/10)</h3>
+  <p class="weakness">Weaknesses: No Brand Knowledge Check. Customer volunteers: "they've always had gourmets... fresh chicken" (00:26). Perfect Discovery Loop opening missed -- pivoted straight to taster explanation.</p>
+  <div class="quote"><span class="ts">(00:26)</span> "We try all the different foods with them. They've always had gourmets and stuff." -- Customer handed discovery on a plate. Rep moved straight to pitch.</div>
+
+  <h3>4. The Fix (4/10)</h3>
+  <p class="weakness">Weaknesses: "85 to 90% human standard meat" (02:42) and supermarket sugar comparison (07:30) are generic quality points never linked to the fussiness/boredom problem. Breed ("Tabby") mentioned, no breed-specific suggestion.</p>
+
+  <h3>5. The Pitch (4/10)</h3>
+  <p class="weakness">Weaknesses: "130 grams" (06:42) is an abstract measurement. No real-world comparison. Supermarket quality comparison not linked to the cats' specific needs.</p>
+
+  <h3>6. Product Precision (4/10)</h3>
+  <p class="weakness">Weaknesses: "14 meals" (01:09) not "14 pouches." Multi-cat customer (00:22) but Permanent Discount never mentioned.</p>
+  <div class="quote"><span class="ts">(14:52)</span> "If you've got multiple cats, it would be too much costly to add multiple cats on." -- Missed Permanent Multi-Cat Discount.</div>
+
+  <h3>7. Price &amp; Transformation (5/10)</h3>
+  <p class="strength">Strengths: Taster price clear ("nine pounds" at 01:11). Ongoing price clear ("43 for the month" at 01:52).</p>
+  <p class="weakness">Weaknesses: Customer calculated daily cost (01:57). No value comparison to current spend. Price resistance met with "take advantage of discount" not health investment framing.</p>
+
+  <h3>8. Clarity &amp; Close (6/10)</h3>
+  <p class="strength">Strengths: Clear Box 2 transparency (11:50). Customer understands taster vs ongoing pricing.</p>
+  <p class="weakness">Weaknesses: No homework assigned. Subscription value limited to functional ("vitamins take weeks" at 14:09).</p>
+
+  <h3>9. Negative Markers (3/10)</h3>
+  <p class="weakness">1. Price too early: (01:11) within 75 seconds.</p>
+  <p class="weakness">2. Logic Leap: Payment before fix connected to discovery.</p>
+  <p class="weakness">3. Info Sequencing: Password/account setup after payment (08:35+).</p>
+
+  <h3>10. Human Element (3/10)</h3>
+  <p class="weakness">Cats waste food and bored of brands (07:08-07:14) -- emotional pain point acknowledged but not built into the fix. Price at (01:11) before any pains identified. Fussiness detected but Recipe Rotation not sold as solution.</p>
+
+  <h2>Top 3 Focus Areas</h2>
+  <div class="focus">
+    <h3>1. The Price Came Too Early</h3>
+    <p><strong>Issue:</strong> Price at 01:11 before any discovery or needs identification.</p>
+    <p><strong>Target:</strong> Price after Discovery-Fix-Pitch sequence. Minimum 5-7 minutes of value-building first.</p>
+    <p><strong>Coaching:</strong> Practice "Earn the Right to the Price": find the nugget, explain how Marro solves THAT problem, THEN reveal the price.</p>
+  </div>
+  <div class="focus">
+    <h3>2. Discovery Was Skipped</h3>
+    <p><strong>Issue:</strong> Customer named brands and diets (00:26). No Discovery Loop probing followed.</p>
+    <p><strong>Target:</strong> When a customer names a brand, ALWAYS follow up: "How long on that?", "What prompted the switch?"</p>
+    <p><strong>Coaching:</strong> "What prompted you to look into fresh food?" would have unlocked the fussiness nugget 6 minutes earlier.</p>
+  </div>
+  <div class="focus">
+    <h3>3. Fussiness Not Solved With Variety</h3>
+    <p><strong>Issue:</strong> Boredom explicitly mentioned (07:14). Recipe choices offered but not positioned as the SOLUTION.</p>
+    <p><strong>Target:</strong> "That's exactly why we offer Recipe Rotation -- swap flavours every box so they never get bored."</p>
+    <p><strong>Coaching:</strong> "What flavours do you want?" (order-taking) vs "Because your cats get bored, we rotate recipes" (solution-selling).</p>
+  </div>
+
+  <h2>Call Context</h2>
+  <table class="context-table">
+    <tr><th>Field</th><th>Value</th></tr>
+    <tr><td>Main Pause Reason</td><td>pet_did_not_eat_food</td></tr>
+    <tr><td>Sub Pause Reason</td><td>MY CAT DIDN'T EVEN GIVE MARRO A TRY</td></tr>
+    <tr><td>B1P Category</td><td><span class="badge badge-danger">Danger</span></td></tr>
+    <tr><td>B1P Days</td><td>2 days from Box 1 to Pause</td></tr>
+    <tr><td>Pause-Transcript Alignment</td><td><strong>Partial alignment with concern.</strong> Sub-reason suggests cat rejected food outright. On the call, customer mentioned fussy cats bored of food (07:08). Rep did not set expectations about transition period or address initial rejection possibility -- likely contributed to B1P:2 Danger outcome.</td></tr>
+  </table>
+
+  <h2>Final Performance Checklist</h2>
+  <p class="checklist-fail"><strong>1. The "Missing Need" Miss: FAIL</strong> -- Fussiness, food boredom, and multi-cat challenges identified but none used to build value before price reveal.</p>
+  <p class="checklist-fail"><strong>2. The "Boredom" Miss: FAIL</strong> -- Boredom mentioned (07:14). Recipe choices offered but Recipe Rotation not sold as the solution.</p>
+  <p class="checklist-fail"><strong>3. The Flow Issue: FAIL</strong> -- Classic Logic Leap. Price at (01:11) before any discovery, fix, or pitch.</p>
+
+  <p style="margin-top:2rem;font-size:0.8rem;color:var(--mr-rose-muted)">Generated by Marro Call QA Agent (Sample) | 2026-04-15</p>
+</body>
+</html>
