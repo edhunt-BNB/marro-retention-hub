@@ -1,0 +1,47 @@
+name: deploy-ai-column-links
+on:
+  push:
+    paths: [".github/workflows/deploy-ai-column-links.yml"]
+permissions:
+  contents: write
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Apply AI column rendering fix
+        run: |
+          python3 << 'SCRIPT'
+with open("index.html", "r") as f:
+    html = f.read()
+print(f"Read {len(html)} chars")
+
+old_render = """p.aiAnalysis?'<details style="cursor:pointer;max-width:220px"><summary style="font-size:.8rem;color:var(--mr-accent);font-weight:600">&#129302; View</summary><div style="font-size:.75rem;line-height:1.4;max-height:200px;overflow-y:auto;margin-top:.4rem;padding:.4rem;background:var(--mr-pink-pale);border-radius:var(--mr-radius-sm);white-space:pre-wrap">'+p.aiAnalysis.replace(/</g,'&lt;').replace(/>/g,'&gt;')+'</div></details>':'<span class="ai-pending">Awaiting</span>'"""
+
+new_render = """p.aiAnalysis?(p.aiAnalysis.indexOf('https://')===0?'<a href="'+p.aiAnalysis+'" target="_blank" style="font-size:.8rem;color:var(--mr-accent);font-weight:600;text-decoration:none" title="View QA Report">&#128202; Report</a>':'<details style="cursor:pointer;max-width:220px"><summary style="font-size:.8rem;color:var(--mr-accent);font-weight:600">&#129302; View</summary><div style="font-size:.75rem;line-height:1.4;max-height:200px;overflow-y:auto;margin-top:.4rem;padding:.4rem;background:var(--mr-pink-pale);border-radius:var(--mr-radius-sm);white-space:pre-wrap">'+p.aiAnalysis.replace(/</g,'&lt;').replace(/>/g,'&gt;')+'</div></details>'):'<span class="ai-pending">Awaiting</span>'"""
+
+if old_render in html:
+    html = html.replace(old_render, new_render)
+    print("SUCCESS: AI column now renders URLs as clickable Report links")
+else:
+    if "indexOf('https://')" in html and "Report</a>" in html:
+        print("ALREADY DEPLOYED")
+    else:
+        print("WARNING: Pattern not found")
+
+with open("index.html", "w") as f:
+    f.write(html)
+print(f"Wrote {len(html)} chars")
+SCRIPT
+      - name: Commit changes
+        run: |
+          git config user.name "Marro Retention Bot"
+          git config user.email "bot@marro.ai"
+          git add index.html
+          git diff --staged --quiet || git commit -m "feat: AI column renders report URLs as clickable links"
+          git push
+      - name: Cleanup workflow
+        run: |
+          git rm .github/workflows/deploy-ai-column-links.yml
+          git commit -m "chore: remove one-time deploy workflow"
+          git push
