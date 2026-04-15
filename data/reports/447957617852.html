@@ -5,6 +5,38 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>QA Report - Philip Bodman</title>
   <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&display=swap" rel="stylesheet">
+  <script type="application/json" id="report-data">
+  {
+    "customer": "Philip Bodman",
+    "phone": "+447957617852",
+    "rep": "Charlene",
+    "pause_date": "2026-04-11",
+    "b1p_days": 2,
+    "b1p_category": "Danger",
+    "pause_reason": "pet_did_not_eat_food",
+    "sub_reason": "MY CAT DIDN'T EVEN GIVE MARRO A TRY",
+    "overall_score": 4.6,
+    "sections": {
+      "global_metrics": 6,
+      "introduction": 7,
+      "discovery": 4,
+      "the_fix": 4,
+      "the_pitch": 4,
+      "product_precision": 4,
+      "price_transformation": 5,
+      "clarity_close": 6,
+      "negative_markers": 3,
+      "human_element": 3
+    },
+    "hard_fails": ["journey_sequence_borderline", "price_too_early"],
+    "checklist": {
+      "missing_need": "FAIL",
+      "boredom": "FAIL",
+      "flow_issue": "FAIL"
+    },
+    "generated": "2026-04-15"
+  }
+  </script>
   <style>
     :root {
       --mr-amber:#E9B377;--mr-amber-dark:#D69042;--mr-gold:#F5A50D;
@@ -17,15 +49,14 @@
     h1{color:var(--mr-burgundy);font-size:1.8rem;font-weight:800}
     h2{color:var(--mr-burgundy);font-size:1.3rem;font-weight:700;margin:1.5rem 0 0.75rem;padding-bottom:0.5rem;border-bottom:2px solid var(--mr-blush)}
     h3{color:var(--mr-burgundy);font-size:1.1rem;font-weight:600;margin:1rem 0 0.5rem}
-    .header{background:var(--mr-burgundy);color:#fff;padding:1.5rem 2rem;border-radius:8px;margin-bottom:1.5rem}
+    .header{background:var(--mr-burgundy);color:#fff;padding:1.5rem 2rem;border-radius:8px;margin-bottom:1.5rem;position:relative}
     .header h1{color:#fff}
     .meta{display:flex;gap:1.5rem;flex-wrap:wrap;margin-top:0.75rem;font-size:0.9rem;opacity:0.9}
     .badge{display:inline-block;padding:0.25rem 0.75rem;border-radius:999px;font-size:0.8rem;font-weight:600}
-    .badge-critical{background:var(--mr-error);color:#fff}
     .badge-danger{background:var(--mr-amber-dark);color:#fff}
-    .badge-likely{background:var(--mr-amber);color:var(--mr-burgundy)}
-    .badge-review{background:var(--mr-rose-muted);color:#fff}
     .overall-score{font-size:3rem;font-weight:800;margin-top:0.5rem}
+    .btn-pdf{position:absolute;top:1.5rem;right:2rem;background:var(--mr-amber);color:var(--mr-burgundy);border:none;padding:0.5rem 1.25rem;border-radius:8px;font-family:inherit;font-size:0.85rem;font-weight:600;cursor:pointer;transition:background 0.2s}
+    .btn-pdf:hover{background:var(--mr-amber-dark);color:#fff}
     .card{background:#fff;border-radius:8px;padding:1.25rem;margin-bottom:1rem;box-shadow:0 2px 8px rgba(69,18,25,0.06)}
     .card-alert{border-left:4px solid var(--mr-error);background:#fff5f5}
     .score-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:0.75rem}
@@ -42,12 +73,13 @@
     .context-table{width:100%;border-collapse:collapse;margin-top:0.5rem}
     .context-table th{text-align:left;font-weight:600;padding:0.5rem;border-bottom:2px solid var(--mr-burgundy);color:var(--mr-burgundy)}
     .context-table td{padding:0.5rem;border-bottom:1px solid var(--mr-blush)}
-    @media print{body{padding:1rem;max-width:100%}.header{break-after:avoid}}
+    @media print{.btn-pdf{display:none}body{padding:1rem;max-width:100%}.header{break-after:avoid}}
   </style>
 </head>
 <body>
   <div class="header">
     <h1>Call QA Report</h1>
+    <button class="btn-pdf" onclick="window.print()">Download PDF</button>
     <div class="meta">
       <span>Customer: Philip Bodman</span>
       <span>Rep: Charlene</span>
@@ -101,10 +133,10 @@
   <div class="quote"><span class="ts">(00:26)</span> "We try all the different foods with them. They've always had gourmets and stuff." -- Customer handed discovery on a plate. Rep moved straight to pitch.</div>
 
   <h3>4. The Fix (4/10)</h3>
-  <p class="weakness">Weaknesses: "85 to 90% human standard meat" (02:42) and supermarket sugar comparison (07:30) are generic quality points never linked to the fussiness/boredom problem. Breed ("Tabby") mentioned, no breed-specific suggestion.</p>
+  <p class="weakness">Weaknesses: "85 to 90% human standard meat" (02:42) and supermarket sugar comparison (07:30) are generic quality points never linked to the fussiness/boredom problem.</p>
 
   <h3>5. The Pitch (4/10)</h3>
-  <p class="weakness">Weaknesses: "130 grams" (06:42) is an abstract measurement. No real-world comparison. Supermarket quality comparison not linked to the cats' specific needs.</p>
+  <p class="weakness">Weaknesses: "130 grams" (06:42) is an abstract measurement. No real-world comparison. Quality comparison not linked to cats' specific needs.</p>
 
   <h3>6. Product Precision (4/10)</h3>
   <p class="weakness">Weaknesses: "14 meals" (01:09) not "14 pouches." Multi-cat customer (00:22) but Permanent Discount never mentioned.</p>
@@ -112,7 +144,7 @@
 
   <h3>7. Price &amp; Transformation (5/10)</h3>
   <p class="strength">Strengths: Taster price clear ("nine pounds" at 01:11). Ongoing price clear ("43 for the month" at 01:52).</p>
-  <p class="weakness">Weaknesses: Customer calculated daily cost (01:57). No value comparison to current spend. Price resistance met with "take advantage of discount" not health investment framing.</p>
+  <p class="weakness">Weaknesses: Customer calculated daily cost (01:57). No value comparison to current spend. Price resistance met with discount framing, not health investment.</p>
 
   <h3>8. Clarity &amp; Close (6/10)</h3>
   <p class="strength">Strengths: Clear Box 2 transparency (11:50). Customer understands taster vs ongoing pricing.</p>
@@ -124,7 +156,7 @@
   <p class="weakness">3. Info Sequencing: Password/account setup after payment (08:35+).</p>
 
   <h3>10. Human Element (3/10)</h3>
-  <p class="weakness">Cats waste food and bored of brands (07:08-07:14) -- emotional pain point acknowledged but not built into the fix. Price at (01:11) before any pains identified. Fussiness detected but Recipe Rotation not sold as solution.</p>
+  <p class="weakness">Cats waste food and bored of brands (07:08-07:14) -- pain point acknowledged but not built into the fix. Price at (01:11) before pains identified. Fussiness detected but Recipe Rotation not sold as solution.</p>
 
   <h2>Top 3 Focus Areas</h2>
   <div class="focus">
@@ -161,6 +193,6 @@
   <p class="checklist-fail"><strong>2. The "Boredom" Miss: FAIL</strong> -- Boredom mentioned (07:14). Recipe choices offered but Recipe Rotation not sold as the solution.</p>
   <p class="checklist-fail"><strong>3. The Flow Issue: FAIL</strong> -- Classic Logic Leap. Price at (01:11) before any discovery, fix, or pitch.</p>
 
-  <p style="margin-top:2rem;font-size:0.8rem;color:var(--mr-rose-muted)">Generated by Marro Call QA Agent (Sample) | 2026-04-15</p>
+  <p style="margin-top:2rem;font-size:0.8rem;color:var(--mr-rose-muted)">Generated by Marro Call QA Agent | 2026-04-15</p>
 </body>
 </html>
