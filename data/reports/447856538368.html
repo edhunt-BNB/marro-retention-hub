@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>QA Report - Lily Clarke</title>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&display=swap" rel="stylesheet">
+  <script type="application/json" id="report-data">
+  {
+    "customer": "Lily Clarke",
+    "phone": "+447856538368",
+    "rep": "Charlene",
+    "pause_date": "2026-04-10",
+    "b1p_days": 0,
+    "b1p_category": "Critical",
+    "pause_reason": "do_not_want_subscription",
+    "sub_reason": "",
+    "overall_score": 6.4,
+    "sections": {
+      "global_metrics": 7,
+      "introduction": 6,
+      "discovery": 5,
+      "the_fix": 5,
+      "the_pitch": 6,
+      "product_precision": 7,
+      "price_transformation": 5,
+      "clarity_close": 8,
+      "negative_markers": 6,
+      "human_element": 6
+    },
+    "hard_fails": [],
+    "checklist": {
+      "missing_need": "PASS",
+      "boredom": "N/A",
+      "flow_issue": "PASS_MARGINAL"
+    },
+    "generated": "2026-04-15"
+  }
+  </script>
+  <style>
+    :root{--mr-amber:#E9B377;--mr-amber-dark:#D69042;--mr-gold:#F5A50D;--mr-burgundy:#451219;--mr-black:#240205;--mr-crimson:#96061C;--mr-blush:#F6DDDD;--mr-pink-pale:#F6ECEC;--mr-bg-light:#FDF9F9;--mr-rose-muted:#816165;--mr-success:#51BC51;--mr-error:#E92A00}
+    *{margin:0;padding:0;box-sizing:border-box}
+    body{font-family:'Bricolage Grotesque',sans-serif;background:var(--mr-bg-light);color:var(--mr-black);line-height:1.6;padding:2rem;max-width:900px;margin:0 auto}
+    h1{color:var(--mr-burgundy);font-size:1.8rem;font-weight:800}h2{color:var(--mr-burgundy);font-size:1.3rem;font-weight:700;margin:1.5rem 0 .75rem;padding-bottom:.5rem;border-bottom:2px solid var(--mr-blush)}h3{color:var(--mr-burgundy);font-size:1.1rem;font-weight:600;margin:1rem 0 .5rem}
+    .header{background:var(--mr-burgundy);color:#fff;padding:1.5rem 2rem;border-radius:8px;margin-bottom:1.5rem;position:relative}.header h1{color:#fff}.meta{display:flex;gap:1.5rem;flex-wrap:wrap;margin-top:.75rem;font-size:.9rem;opacity:.9}
+    .badge{display:inline-block;padding:.25rem .75rem;border-radius:999px;font-size:.8rem;font-weight:600}.badge-critical{background:var(--mr-error);color:#fff}
+    .overall-score{font-size:3rem;font-weight:800;margin-top:.5rem}
+    .btn-pdf{position:absolute;top:1.5rem;right:2rem;background:var(--mr-amber);color:var(--mr-burgundy);border:none;padding:.5rem 1.25rem;border-radius:8px;font-family:inherit;font-size:.85rem;font-weight:600;cursor:pointer}.btn-pdf:hover{background:var(--mr-amber-dark);color:#fff}
+    .card{background:#fff;border-radius:8px;padding:1.25rem;margin-bottom:1rem;box-shadow:0 2px 8px rgba(69,18,25,.06)}.card-pause{border-left:4px solid var(--mr-amber-dark)}
+    .score-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:.75rem}.score-item{background:#fff;border-radius:8px;padding:1rem;box-shadow:0 1px 4px rgba(69,18,25,.05)}.score-num{font-size:1.5rem;font-weight:700}
+    .score-low{color:var(--mr-error)}.score-mid{color:var(--mr-amber-dark)}.score-ok{color:var(--mr-rose-muted)}.score-good{color:var(--mr-success)}.score-great{color:var(--mr-gold)}
+    .strength{color:var(--mr-success);font-weight:500}.weakness{color:var(--mr-error);font-weight:500}
+    .quote{background:var(--mr-pink-pale);border-left:3px solid var(--mr-amber);padding:.75rem 1rem;margin:.5rem 0;border-radius:0 4px 4px 0;font-style:italic;font-size:.9rem}.quote .ts{font-weight:600;font-style:normal;color:var(--mr-burgundy)}
+    .focus{background:var(--mr-blush);border-radius:8px;padding:1rem;margin-bottom:.75rem}
+    .pause-data{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin:1rem 0}.pause-stat{background:var(--mr-pink-pale);border-radius:8px;padding:1rem;text-align:center}.pause-stat .label{font-size:.75rem;font-weight:600;color:var(--mr-rose-muted);text-transform:uppercase;letter-spacing:.05em}.pause-stat .value{font-size:1rem;font-weight:700;color:var(--mr-burgundy);margin-top:.25rem}
+    .checklist-pass{color:var(--mr-success);margin:.5rem 0}.checklist-fail{color:var(--mr-error);margin:.5rem 0}
+    @media print{.btn-pdf{display:none}body{padding:1rem;max-width:100%}.header{break-after:avoid}}
+  </style>
+</head>
+<body>
+  <div class="header">
+    <h1>Call QA Report</h1>
+    <button class="btn-pdf" onclick="window.print()">Download PDF</button>
+    <div class="meta">
+      <span>Customer: Lily Clarke</span>
+      <span>Rep: Charlene</span>
+      <span>Date: 10/04/26</span>
+      <span class="badge badge-critical">Critical (B1P: 0)</span>
+    </div>
+    <div class="overall-score">6.4/10</div>
+  </div>
+
+  <div class="card">
+    <h2>Executive Summary</h2>
+    <p>Charlene delivered a significantly improved call compared to the Philip Bodman transcript (4.6 vs 6.4). The transition guide was mentioned four times, the 50/50 split was explained, storage instructions came before payment, and the close was comprehensive. However, Lily was an <strong>extremely passive customer</strong> -- a new cat owner with a 9-week kitten who found Marro on Instagram. Her responses were almost entirely monosyllabic. Despite Charlene doing everything right mechanically, <strong>Lily cancelled on the day Box 1 arrived</strong> (B1P: 0, Critical). The reason -- "do not want subscription" -- suggests an impulse sign-up that didn't survive contact with reality.</p>
+    <p><strong>Priority coaching point:</strong> When a customer is this passive, the rep must test whether they're genuinely committed or just agreeing to end the call. Passive agreement is not informed consent.</p>
+  </div>
+
+  <h2>Section Scores</h2>
+  <div class="score-grid">
+    <div class="score-item"><div class="score-num score-good">7</div><h3>1. Global Metrics</h3><p>Warm tone. "Dexter" used frequently. "Little kitty menus" is a nice personal touch.</p></div>
+    <div class="score-item"><div class="score-num score-ok">6</div><h3>2. Introduction</h3><p>Name + Brand + Pet within 20 seconds. "Massive discount" is offer language, not win.</p></div>
+    <div class="score-item"><div class="score-num score-mid">5</div><h3>3. Discovery</h3><p>Asked motivation (00:55) -- good. Customer: "saw it on Instagram." Limited nugget from new owner.</p></div>
+    <div class="score-item"><div class="score-num score-mid">5</div><h3>4. The Fix</h3><p>Supermarket sugar comparison. "Night and day" framing. Generic but appropriate for kitten/no issues.</p></div>
+    <div class="score-item"><div class="score-num score-ok">6</div><h3>5. The Pitch</h3><p>"Treat it like human standard cold meat" (04:37) is a good anchor. Warming tip adds value.</p></div>
+    <div class="score-item"><div class="score-num score-good">7</div><h3>6. Product Precision</h3><p>Transition guide mentioned 4 times. 50/50 split explained. Kitten plan selected. Strong.</p></div>
+    <div class="score-item"><div class="score-num score-mid">5</div><h3>7. Price &amp; Transformation</h3><p>Taster + ongoing stated. No daily anchor. No value comparison to Sheba spend.</p></div>
+    <div class="score-item"><div class="score-num score-good">8</div><h3>8. Clarity &amp; Close</h3><p>Storage before payment. Account walkthrough. Recipe management shown. Instagram community.</p></div>
+    <div class="score-item"><div class="score-num score-ok">6</div><h3>9. Negative Markers</h3><p>Price at 02:42 -- under 3 mins. Discovery thin before price. Minor sequencing issues.</p></div>
+    <div class="score-item"><div class="score-num score-ok">6</div><h3>10. Human Element</h3><p>New kitten excitement acknowledged. Warming tip is genuine advice. Transition prep good.</p></div>
+  </div>
+
+  <h2>Detailed Analysis</h2>
+
+  <h3>1. Global Metrics (7/10)</h3>
+  <p class="strength">Strengths: "Little kitty menus" (05:26, 12:06) adds personality and warmth. "Dexter" used consistently. No Robot Rule violations -- Charlene keeps exchanges conversational.</p>
+  <p class="weakness">Weaknesses: Customer's one-word responses ("yeah", "okay", "perfect") throughout the call should have been a signal to slow down and engage more deeply rather than continuing the standard flow.</p>
+
+  <h3>3. Discovery (5/10)</h3>
+  <p class="strength">Strengths: "What was making you interested in this in the first place?" (00:55) -- good open question. Identified: Instagram discovery, new kitten, currently on Sheba.</p>
+  <p class="weakness">Weaknesses: When Lily said "I saw it on Instagram" (01:04), this was a cue to explore further: "What was it about the ad that caught your eye?" Instagram discovery = impulse interest, not researched need. The rep should have built deeper motivation.</p>
+  <div class="quote"><span class="ts">(01:04)</span> "I saw it on Instagram." -- Impulse interest signal. This customer found Marro through social media browsing, not through actively searching for cat food solutions. High cancellation risk.</div>
+
+  <h3>6. Product Precision (7/10)</h3>
+  <p class="strength">Strengths: Transition guide mentioned four separate times (07:04, 07:18, 08:12, 08:21). 50/50 split explained clearly (07:04, 07:31). Kitten plan selected. Storage before payment (04:23). This is the strongest product precision of the three calls analysed.</p>
+  <div class="quote"><span class="ts">(07:04)</span> "The most important part with this, Lily, is you've got to wean them onto the plan. So we do recommend a 50/50 split just for the first few days."</div>
+  <p class="weakness">Weaknesses: Said "14 meals" (02:42) rather than "14 pouches." Terminology should be precise.</p>
+
+  <h3>8. Clarity &amp; Close (8/10)</h3>
+  <p class="strength">Strengths: Full account walkthrough (10:20+). Recipe change instructions. Delivery date management. Next box timing explained. Mentioned Instagram community. Tupperware storage tip from personal experience (11:43).</p>
+  <p class="weakness">Weaknesses: No customer service phone number given (unlike Meryl's call). No specific outcome expectations set ("shinier coat", "better digestion" etc.).</p>
+
+  <h2>Top 3 Focus Areas</h2>
+  <div class="focus">
+    <h3>1. Recognise Impulse Interest vs Genuine Need</h3>
+    <p><strong>Issue:</strong> Lily found Marro on Instagram. She's a new cat owner (9 weeks) with no feeding problems. This is curiosity-based interest, not need-based. The entire call proceeded as if she had a genuine reason to switch, when she didn't.</p>
+    <p><strong>Target:</strong> When a customer says "I saw it on Instagram/an ad," dig deeper: "What was it about the post that caught your eye?" or "What are you hoping to get out of switching to fresh food?" Build a genuine reason to stay.</p>
+    <p><strong>Coaching:</strong> Instagram discovery + new pet owner + no feeding issues = highest cancellation risk profile. The rep needs to CREATE the motivation that doesn't naturally exist: "Starting Dexter on fresh food from 9 weeks means he'll never develop the sugar cravings that make older cats fussy. You're giving him the best possible start."</p>
+  </div>
+  <div class="focus">
+    <h3>2. Daily Cost Anchor Missing</h3>
+    <p><strong>Issue:</strong> Price stated as "nine pounds" (02:42) and later "$9.90 a week" and "43 pounds" monthly. No daily or per-meal breakdown to make the cost feel small.</p>
+    <p><strong>Target:</strong> "That works out to about 70p per meal -- less than a can of Felix." The daily anchor makes the subscription feel trivial.</p>
+    <p><strong>Coaching:</strong> For subscription-anxious customers (which "do not want subscription" confirms), the daily anchor reframes the commitment from "43 pounds a month" (scary) to "70p a meal" (nothing). This is specifically critical for the customers most likely to cancel over subscription anxiety.</p>
+  </div>
+  <div class="focus">
+    <h3>3. Test Commitment From Passive Customers</h3>
+    <p><strong>Issue:</strong> Lily's longest unprompted statement in the entire 12-minute call is 10 words. She responded to everything with "yeah", "okay", "perfect", "that's good thanks." This is compliance, not engagement.</p>
+    <p><strong>Target:</strong> Before payment: "Lily, just before we set this up -- tell me, what are you most excited about trying with Dexter?" Force articulation of commitment.</p>
+    <p><strong>Coaching:</strong> If the customer can't tell you WHY they're doing this, they won't remember why when the box arrives and the subscription reality sets in. The easier they say yes, the easier they'll cancel.</p>
+  </div>
+
+  <h2>Pause Reason Analysis</h2>
+  <div class="pause-data">
+    <div class="pause-stat"><div class="label">Pause Reason</div><div class="value">Do Not Want Subscription</div></div>
+    <div class="pause-stat"><div class="label">Sub Reason</div><div class="value">N/A</div></div>
+    <div class="pause-stat"><div class="label">B1P</div><div class="value"><span class="badge badge-critical">Critical</span> 0 days</div></div>
+  </div>
+
+  <div class="card card-pause">
+    <h3>What Happened</h3>
+    <p>Lily cancelled her subscription <strong>on the same day her first box arrived</strong> (B1P: 0). Box 1 was scheduled for Friday April 10. She paused on April 10. The reason -- "do not want subscription" -- with no sub-reason tells us this was not about the food (she may not have even opened it). This was about the subscription model itself.</p>
+    <p>A B1P of 0 (Critical) on delivery day suggests one of two scenarios: (1) Lily saw the delivery notification and the reality of a recurring commitment triggered cancellation, or (2) she had been planning to cancel since the call but hadn't gotten around to it until the box forced the decision.</p>
+  </div>
+
+  <div class="card card-pause">
+    <h3>The Transcript Connection</h3>
+    <p>The call reveals a clear pattern of impulse interest with no underlying commitment:</p>
+    <div class="quote"><span class="ts">(01:04)</span> "I saw it on Instagram." -- The origin of interest was passive social media browsing, not an active search for cat food solutions.</div>
+    <div class="quote"><span class="ts">(01:07)</span> "I've just got Dexter. So..." -- A 9-week kitten. New pet excitement. Everything is new and interesting, including Instagram ads for cat food. This is not a considered purchasing decision.</div>
+    <div class="quote"><span class="ts">(03:01)</span> "Yes. I am." -- When asked if she's happy to go ahead. This is Lily's most committed statement in the entire call. Two words. The bar for "yes" was extraordinarily low.</div>
+    <p>Lily never asked a single question about the product unprompted. Never expressed excitement. Never engaged with the health benefits or the comparison to Sheba. She was a <strong>frictionless sale</strong> -- which is precisely the problem. Zero friction on the way in means zero friction on the way out.</p>
+  </div>
+
+  <div class="card card-pause">
+    <h3>What Should Have Happened</h3>
+    <p>Charlene's mechanics were solid (transition guide x4, storage before payment, account walkthrough). But for an impulse-interest customer with a brand-new kitten and zero feeding issues, the standard script isn't enough. The rep needed to <strong>create a reason to stay that outlasts the call</strong>:</p>
+    <p><strong>Build the "Best Start" narrative:</strong> "Lily, you've got Dexter at the perfect age. Starting him on fresh food at 9 weeks means he'll never develop the sugar dependency that makes older cats fussy. You're literally setting him up for a lifetime of healthy eating. Most people wish they'd started this early."</p>
+    <p><strong>Create anticipation for the box:</strong> "When the box arrives Friday, try warming the first pouch for about 10 seconds in the microwave -- the smell is incredible and kittens go crazy for it. Send me a video if he loves it!" (Creating a specific, fun action tied to delivery.)</p>
+    <p><strong>Anchor against Sheba with a daily comparison:</strong> "You're probably spending about 50-60p a day on Sheba. Marro works out to about the same but with 85% real meat instead of 4%. Same cost, completely different food."</p>
+  </div>
+
+  <div class="card card-pause">
+    <h3>Retention Impact Assessment</h3>
+    <p><strong>Preventability: MODERATE-LOW.</strong> Impulse sign-ups from Instagram are inherently high-churn. The customer had no problem to solve and no emotional stake in the product. Even a perfect call may not have prevented this cancellation. However, building the "best start" narrative and creating delivery-day anticipation would have improved the odds.</p>
+    <p><strong>Pattern risk: HIGH.</strong> Two of Charlene's three calls resulted in Critical B1P pauses. Philip (B1P: 2, food rejection) and Lily (B1P: 0, subscription rejection) are different failure modes but both point to insufficient commitment-building. If Charlene's other calls follow this pattern, she needs targeted coaching on reading customer engagement signals and testing commitment before closing.</p>
+    <p><strong>Recovery potential: LOW.</strong> "Do not want subscription" on delivery day is one of the hardest pause reasons to recover from. The customer made a conscious decision when confronted with the reality of recurring deliveries. A one-off sample offer (non-subscription) might re-engage, but the subscription model itself was the objection.</p>
+    <p><strong>Comparison to Philip Bodman call:</strong> Charlene scored 6.4/10 here vs 4.6/10 on Philip's call. The improvement is real -- transition guide mentioned, storage explained early, account walkthrough done. But both calls share a common weakness: insufficient discovery and commitment-testing. The mechanics improved but the strategic approach to different customer types hasn't adapted.</p>
+  </div>
+
+  <h2>Final Performance Checklist</h2>
+  <p class="checklist-pass"><strong>1. The "Missing Need" Miss: PASS</strong> -- No strong needs were present (healthy new kitten). Rep appropriately asked about motivation, allergies, and health. Instagram interest correctly identified.</p>
+  <p class="checklist-pass"><strong>2. The "Boredom" Miss: N/A</strong> -- No boredom or fussiness detected.</p>
+  <p class="checklist-pass"><strong>3. The Flow Issue: PASS (marginal)</strong> -- Product explanation before price. Storage before payment. Transition guide before and after. Sequence was correct, though discovery was thin.</p>
+
+  <p style="margin-top:2rem;font-size:.8rem;color:var(--mr-rose-muted)">Generated by Marro Call QA Agent | 2026-04-15</p>
+</body>
+</html>
