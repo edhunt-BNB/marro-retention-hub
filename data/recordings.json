@@ -10,5 +10,11 @@
     "transcript_file": "data/transcripts/447944179726.txt",
     "assigned_date": "2026-04-15T19:38:00Z",
     "assigned_by": "recording-assigner"
+  },
+  "+447856538368": {
+    "recording_file": "07856538368_20260408_11502189_user_cbasbudak.mp3",
+    "transcript_file": "data/transcripts/447856538368.txt",
+    "assigned_date": "2026-04-15T18:47:43Z",
+    "assigned_by": "recording-assigner"
   }
 }
