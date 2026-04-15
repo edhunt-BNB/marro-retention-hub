@@ -59,6 +59,7 @@
     .btn-pdf:hover{background:var(--mr-amber-dark);color:#fff}
     .card{background:#fff;border-radius:8px;padding:1.25rem;margin-bottom:1rem;box-shadow:0 2px 8px rgba(69,18,25,0.06)}
     .card-alert{border-left:4px solid var(--mr-error);background:#fff5f5}
+    .card-pause{border-left:4px solid var(--mr-amber-dark);background:#fff}
     .score-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:0.75rem}
     .score-item{background:#fff;border-radius:8px;padding:1rem;box-shadow:0 1px 4px rgba(69,18,25,0.05)}
     .score-num{font-size:1.5rem;font-weight:700}
@@ -68,11 +69,11 @@
     .quote{background:var(--mr-pink-pale);border-left:3px solid var(--mr-amber);padding:0.75rem 1rem;margin:0.5rem 0;border-radius:0 4px 4px 0;font-style:italic;font-size:0.9rem}
     .quote .ts{font-weight:600;font-style:normal;color:var(--mr-burgundy)}
     .focus{background:var(--mr-blush);border-radius:8px;padding:1rem;margin-bottom:0.75rem}
-    .checklist-pass{color:var(--mr-success);margin:0.5rem 0}
+    .pause-data{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin:1rem 0}
+    .pause-stat{background:var(--mr-pink-pale);border-radius:8px;padding:1rem;text-align:center}
+    .pause-stat .label{font-size:0.75rem;font-weight:600;color:var(--mr-rose-muted);text-transform:uppercase;letter-spacing:0.05em}
+    .pause-stat .value{font-size:1rem;font-weight:700;color:var(--mr-burgundy);margin-top:0.25rem}
     .checklist-fail{color:var(--mr-error);margin:0.5rem 0}
-    .context-table{width:100%;border-collapse:collapse;margin-top:0.5rem}
-    .context-table th{text-align:left;font-weight:600;padding:0.5rem;border-bottom:2px solid var(--mr-burgundy);color:var(--mr-burgundy)}
-    .context-table td{padding:0.5rem;border-bottom:1px solid var(--mr-blush)}
     @media print{.btn-pdf{display:none}body{padding:1rem;max-width:100%}.header{break-after:avoid}}
   </style>
 </head>
@@ -118,7 +119,6 @@
   </div>
 
   <h2>Detailed Analysis</h2>
-
   <h3>1. Global Metrics (6/10)</h3>
   <p class="strength">Strengths: Warm and personable tone throughout. Natural rapport with Philip.</p>
   <p class="weakness">Weaknesses: 68-second monologue at (11:34) violates the 45-Second Robot Rule. Pet name "Ronnie" used ~5 times, passes threshold but underused in pitch/price sections.</p>
@@ -126,67 +126,105 @@
 
   <h3>2. Introduction (7/10)</h3>
   <p class="strength">Strengths: "This is Charlene... from Marrow, the Fresh Cat Food Company" (00:08) -- Name + Brand within 10 seconds. References "Ronnie" and survey immediately. No Apology Rule passed.</p>
-  <p class="weakness">Weaknesses: "Massive discount" (00:55) is offer language, not win language. No hero language ("Good news" / "Gift").</p>
+  <p class="weakness">Weaknesses: "Massive discount" (00:55) is offer language, not win language. No hero language.</p>
 
   <h3>3. Discovery &amp; Connection (4/10)</h3>
-  <p class="weakness">Weaknesses: No Brand Knowledge Check. Customer volunteers: "they've always had gourmets... fresh chicken" (00:26). Perfect Discovery Loop opening missed -- pivoted straight to taster explanation.</p>
+  <p class="weakness">Weaknesses: No Brand Knowledge Check. Customer volunteers: "they've always had gourmets... fresh chicken" (00:26). Perfect Discovery Loop opening missed.</p>
   <div class="quote"><span class="ts">(00:26)</span> "We try all the different foods with them. They've always had gourmets and stuff." -- Customer handed discovery on a plate. Rep moved straight to pitch.</div>
 
   <h3>4. The Fix (4/10)</h3>
   <p class="weakness">Weaknesses: "85 to 90% human standard meat" (02:42) and supermarket sugar comparison (07:30) are generic quality points never linked to the fussiness/boredom problem.</p>
 
   <h3>5. The Pitch (4/10)</h3>
-  <p class="weakness">Weaknesses: "130 grams" (06:42) is an abstract measurement. No real-world comparison. Quality comparison not linked to cats' specific needs.</p>
+  <p class="weakness">Weaknesses: "130 grams" (06:42) is an abstract measurement. No real-world comparison. Quality points not linked to cats' specific needs.</p>
 
   <h3>6. Product Precision (4/10)</h3>
-  <p class="weakness">Weaknesses: "14 meals" (01:09) not "14 pouches." Multi-cat customer (00:22) but Permanent Discount never mentioned.</p>
+  <p class="weakness">Weaknesses: "14 meals" not "14 pouches." Multi-cat customer but Permanent Discount never mentioned.</p>
   <div class="quote"><span class="ts">(14:52)</span> "If you've got multiple cats, it would be too much costly to add multiple cats on." -- Missed Permanent Multi-Cat Discount.</div>
 
   <h3>7. Price &amp; Transformation (5/10)</h3>
-  <p class="strength">Strengths: Taster price clear ("nine pounds" at 01:11). Ongoing price clear ("43 for the month" at 01:52).</p>
-  <p class="weakness">Weaknesses: Customer calculated daily cost (01:57). No value comparison to current spend. Price resistance met with discount framing, not health investment.</p>
+  <p class="strength">Strengths: Taster and ongoing prices clearly stated.</p>
+  <p class="weakness">Weaknesses: Customer calculated daily cost (01:57). No value comparison. Price resistance met with discount framing, not health investment.</p>
 
   <h3>8. Clarity &amp; Close (6/10)</h3>
-  <p class="strength">Strengths: Clear Box 2 transparency (11:50). Customer understands taster vs ongoing pricing.</p>
-  <p class="weakness">Weaknesses: No homework assigned. Subscription value limited to functional ("vitamins take weeks" at 14:09).</p>
+  <p class="strength">Strengths: Clear Box 2 transparency (11:50).</p>
+  <p class="weakness">Weaknesses: No homework assigned. Subscription value limited to functional framing.</p>
 
   <h3>9. Negative Markers (3/10)</h3>
   <p class="weakness">1. Price too early: (01:11) within 75 seconds.</p>
   <p class="weakness">2. Logic Leap: Payment before fix connected to discovery.</p>
-  <p class="weakness">3. Info Sequencing: Password/account setup after payment (08:35+).</p>
+  <p class="weakness">3. Info Sequencing: Account setup after payment (08:35+).</p>
 
   <h3>10. Human Element (3/10)</h3>
-  <p class="weakness">Cats waste food and bored of brands (07:08-07:14) -- pain point acknowledged but not built into the fix. Price at (01:11) before pains identified. Fussiness detected but Recipe Rotation not sold as solution.</p>
+  <p class="weakness">Cats bored of food (07:08-07:14) -- pain point not built into the fix. Price before pains identified. Recipe Rotation not sold as solution.</p>
 
   <h2>Top 3 Focus Areas</h2>
   <div class="focus">
     <h3>1. The Price Came Too Early</h3>
-    <p><strong>Issue:</strong> Price at 01:11 before any discovery or needs identification.</p>
-    <p><strong>Target:</strong> Price after Discovery-Fix-Pitch sequence. Minimum 5-7 minutes of value-building first.</p>
-    <p><strong>Coaching:</strong> Practice "Earn the Right to the Price": find the nugget, explain how Marro solves THAT problem, THEN reveal the price.</p>
+    <p><strong>Issue:</strong> Price at 01:11 before any discovery.</p>
+    <p><strong>Target:</strong> Price after Discovery-Fix-Pitch. Minimum 5-7 minutes of value-building.</p>
+    <p><strong>Coaching:</strong> "Earn the Right to the Price": find the nugget, match the product, THEN reveal the price.</p>
   </div>
   <div class="focus">
     <h3>2. Discovery Was Skipped</h3>
-    <p><strong>Issue:</strong> Customer named brands and diets (00:26). No Discovery Loop probing followed.</p>
+    <p><strong>Issue:</strong> Customer named brands (00:26). No probing followed.</p>
     <p><strong>Target:</strong> When a customer names a brand, ALWAYS follow up: "How long on that?", "What prompted the switch?"</p>
     <p><strong>Coaching:</strong> "What prompted you to look into fresh food?" would have unlocked the fussiness nugget 6 minutes earlier.</p>
   </div>
   <div class="focus">
     <h3>3. Fussiness Not Solved With Variety</h3>
-    <p><strong>Issue:</strong> Boredom explicitly mentioned (07:14). Recipe choices offered but not positioned as the SOLUTION.</p>
+    <p><strong>Issue:</strong> Boredom mentioned (07:14). Choices offered but not positioned as the SOLUTION.</p>
     <p><strong>Target:</strong> "That's exactly why we offer Recipe Rotation -- swap flavours every box so they never get bored."</p>
     <p><strong>Coaching:</strong> "What flavours do you want?" (order-taking) vs "Because your cats get bored, we rotate recipes" (solution-selling).</p>
   </div>
 
-  <h2>Call Context</h2>
-  <table class="context-table">
-    <tr><th>Field</th><th>Value</th></tr>
-    <tr><td>Main Pause Reason</td><td>pet_did_not_eat_food</td></tr>
-    <tr><td>Sub Pause Reason</td><td>MY CAT DIDN'T EVEN GIVE MARRO A TRY</td></tr>
-    <tr><td>B1P Category</td><td><span class="badge badge-danger">Danger</span></td></tr>
-    <tr><td>B1P Days</td><td>2 days from Box 1 to Pause</td></tr>
-    <tr><td>Pause-Transcript Alignment</td><td><strong>Partial alignment with concern.</strong> Sub-reason suggests cat rejected food outright. On the call, customer mentioned fussy cats bored of food (07:08). Rep did not set expectations about transition period or address initial rejection possibility -- likely contributed to B1P:2 Danger outcome.</td></tr>
-  </table>
+  <h2>Pause Reason Analysis</h2>
+
+  <div class="pause-data">
+    <div class="pause-stat">
+      <div class="label">Pause Reason</div>
+      <div class="value">Pet Did Not Eat Food</div>
+    </div>
+    <div class="pause-stat">
+      <div class="label">Sub Reason</div>
+      <div class="value">Cat Didn't Even Give Marro a Try</div>
+    </div>
+    <div class="pause-stat">
+      <div class="label">B1P</div>
+      <div class="value"><span class="badge badge-danger">Danger</span> 2 days</div>
+    </div>
+  </div>
+
+  <div class="card card-pause">
+    <h3>What Happened</h3>
+    <p>Philip paused his subscription just <strong>2 days after receiving Box 1</strong>. The sub-reason -- "my cat didn't even give Marro a try" -- tells us the food was rejected on sight or smell. The cat did not attempt to eat the product. This is one of the most common and most preventable early-pause scenarios in cat food subscriptions.</p>
+    <p>A B1P of 2 (Danger) means Philip opened the box, offered it to the cat, the cat refused, and Philip cancelled almost immediately. He did not persist through a transition period. This strongly suggests <strong>no expectations were set on the call about initial food rejection or transition timelines</strong>.</p>
+  </div>
+
+  <div class="card card-pause">
+    <h3>The Transcript Connection</h3>
+    <p>The call reveals several warning signs that directly foreshadow this outcome:</p>
+    <div class="quote"><span class="ts">(00:26)</span> "We try all the different foods with them... they've always had gourmets and stuff. They have fresh chicken." -- Philip's cats are serial food-swappers. They're already difficult to please.</div>
+    <div class="quote"><span class="ts">(07:08)</span> "They're getting bored of it and then they're like... some cats who are just sticking some Felix in front of them and mush it down." -- Philip explicitly identifies boredom and fussiness. His cats reject foods regularly.</div>
+    <div class="quote"><span class="ts">(03:55)</span> "They don't seem to like the beef." -- Evidence of selective eating. These cats have established preferences and reject unfamiliar flavours.</div>
+    <p>These three moments paint a clear picture: Philip has <strong>notoriously fussy cats who reject new foods</strong>. Every one of these was a signal that the rep should have acted on. Instead, none were used to set expectations about a transition period, and the customer was left unprepared when the cats inevitably rejected an unfamiliar product on day 1.</p>
+  </div>
+
+  <div class="card card-pause">
+    <h3>What Should Have Happened</h3>
+    <p>Given the clear fussiness signals, the rep had multiple opportunities to inoculate against this exact outcome:</p>
+    <p><strong>During Discovery:</strong> "You mentioned they're fussy eaters -- that's actually really common with cats switching to fresh food. Most cats need 3-5 days to adjust because it smells and looks completely different to what they're used to."</p>
+    <p><strong>During the Fix:</strong> "The reason fussy cats end up loving Marro is the high meat content -- 85-90% real meat. But here's the thing, Philip: cats are creatures of habit. Don't panic if Ronnie sniffs it and walks away on day 1. Try warming it slightly, or mix a tiny bit with his current food. By day 3-4, most cats are hooked."</p>
+    <p><strong>During the Close (To-Do List):</strong> "One thing I always tell cat parents with fussy ones -- give it the full two weeks. The taster box is designed for this. Don't give up after day 1 if they turn their nose up. Try warming it, try mixing it. That's exactly why we give you 14 pouches."</p>
+    <p>None of this happened. The result: a customer with openly fussy cats, given no tools to handle rejection, who cancelled 48 hours after delivery.</p>
+  </div>
+
+  <div class="card card-pause">
+    <h3>Retention Impact Assessment</h3>
+    <p><strong>Preventability: HIGH.</strong> This pause was almost certainly preventable. The customer was engaged, willing to spend (he paid without hesitation), and had multiple cats (larger lifetime value). The failure point was not the product or the price -- it was the lack of expectation-setting for fussy cats transitioning to fresh food.</p>
+    <p><strong>Pattern risk:</strong> "Pet did not eat food" with a B1P of 1-4 is the single highest-volume preventable pause reason in cat food subscriptions. When combined with fussiness signals on the call, it represents a coaching priority. If this rep handles other fussy-cat calls without addressing the transition period, this pattern will repeat.</p>
+    <p><strong>Recovery potential:</strong> Moderate. Philip was a warm customer who spent willingly. A follow-up call acknowledging the rejection, offering warming/mixing tips, and suggesting a second trial with different recipes could re-engage. The sub-reason ("didn't even give it a try") suggests the cat, not the customer, made the decision -- Philip may still be open to trying again.</p>
+  </div>
 
   <h2>Final Performance Checklist</h2>
   <p class="checklist-fail"><strong>1. The "Missing Need" Miss: FAIL</strong> -- Fussiness, food boredom, and multi-cat challenges identified but none used to build value before price reveal.</p>
