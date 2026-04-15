@@ -1,0 +1,75 @@
+name: deploy-transcript-file-support
+on:
+  push:
+    paths: [".github/workflows/deploy-transcript-file-support.yml"]
+permissions:
+  contents: write
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Apply hub code changes
+        run: |
+          python3 << 'SCRIPT'
+          with open("index.html", "r") as f:
+              html = f.read()
+          print(f"Read {len(html)} chars")
+
+          changes = []
+
+          # Change 1: getRecordingData - support transcript_file field
+          # If entry.transcript_file exists, return raw GitHub URL
+          # If entry.transcript exists (legacy), return as before
+          old1 = "transcript:entry.transcript||'',aiAnalysis:entry.ai_analysis||''}"
+          new1 = "transcript:entry.transcript_file?'https://raw.githubusercontent.com/edhunt-BNB/marro-retention-hub/main/'+entry.transcript_file:(entry.transcript||''),aiAnalysis:entry.ai_analysis||''}"
+          if old1 in html:
+              html = html.replace(old1, new1)
+              changes.append("getRecordingData: transcript_file URL support")
+          else:
+              print(f"WARNING: old1 not found")
+
+          # Change 2a: Transcript rendering - add URL check before <details>
+          old2a = """p.transcript?'<details"""
+          new2a = """p.transcript?(p.transcript.indexOf('https://')===0?'<a href="'+p.transcript+'" target="_blank" style="font-size:.8rem;color:var(--mr-accent);font-weight:600;text-decoration:none" title="Open transcript">&#128196; View</a>':'<details"""
+          if old2a in html:
+              html = html.replace(old2a, new2a)
+              changes.append("Rendering: URL link before details fallback")
+          else:
+              print(f"WARNING: old2a not found")
+
+          # Change 2b: Close the inner ternary with )
+          old2b = """</div></details>':'<span class="ai-pending">Awaiting</span>')+'</td><td>"""
+          new2b = """</div></details>'):'<span class="ai-pending">Awaiting</span>')+'</td><td>"""
+          if old2b in html:
+              html = html.replace(old2b, new2b)
+              changes.append("Rendering: close inner ternary")
+          else:
+              print(f"WARNING: old2b not found")
+
+          with open("index.html", "w") as f:
+              f.write(html)
+          print(f"Wrote {len(html)} chars")
+          print(f"Applied {len(changes)}/3 changes: {changes}")
+
+          # Verify
+          assert "transcript_file?" in html, "Change 1 missing"
+          assert "indexOf('https://')" in html, "Change 2a missing"
+          print("All verifications passed")
+          SCRIPT
+      - name: Commit changes
+        run: |
+          git config user.name "Marro Retention Bot"
+          git config user.email "bot@marro.ai"
+          git add index.html
+          git diff --staged --quiet || git commit -m "feat: support separate transcript files in hub
+
+          - getRecordingData returns raw GitHub URL for transcript_file entries
+          - Transcript column shows clickable link for URL transcripts
+          - Legacy inline transcripts still render in expandable details"
+          git push
+      - name: Cleanup workflow
+        run: |
+          git rm .github/workflows/deploy-transcript-file-support.yml
+          git commit -m "chore: remove one-time deploy workflow"
+          git push
