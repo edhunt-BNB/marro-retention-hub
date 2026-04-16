@@ -1,28 +1,21 @@
 name: Commit Transcripts Bundle
-on: push
+on:
+  push:
+    paths:
+      - '.github/workflows/commit_transcripts.yml'
 jobs:
   commit:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     steps:
       - uses: actions/checkout@v4
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
       - name: Download and unpack transcripts
         run: |
           curl -sL 'https://pub.hyperagent.com/api/published/ZC4CvAQyQNoJ90fTqFS-Zg/transcripts_bundle.json' -o bundle.json
           mkdir -p data/transcripts
-          python3 << 'PYEOF'
-          import json, os
-          with open('bundle.json') as f:
-              bundle = json.load(f)
-          for phone, content in bundle.items():
-              path = f'data/transcripts/{phone}.txt'
-              with open(path, 'w') as out:
-                  out.write(content)
-              print(f'Created {path} ({len(content)} chars)')
-          print(f'Total: {len(bundle)} transcripts')
-          PYEOF
-      - name: Commit transcripts and self-delete
+          python3 -c 'import json; bundle=json.load(open("bundle.json")); [(open(f"data/transcripts/{p}.txt","w").write(c), print(f"Created {p}.txt ({len(c)} chars)")) for p,c in bundle.items()]; print(f"Total: {len(bundle)} transcripts")'
+      - name: Commit and push
         run: |
           git config user.name 'github-actions[bot]'
           git config user.email 'github-actions[bot]@users.noreply.github.com'
