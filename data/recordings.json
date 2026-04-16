@@ -28,5 +28,95 @@
     "transcript_file": "data/transcripts/447833670173.txt",
     "assigned_date": "2026-04-16T06:15:00Z",
     "assigned_by": "recording-assigner"
+  },
+  "+441519234229": {
+    "recording_file": "01519234229_20260410_10203034_user_blee.mp3",
+    "transcript_file": "data/transcripts/441519234229.txt",
+    "assigned_date": "2026-04-16T07:15:00Z",
+    "assigned_by": "recording-assigner"
+  },
+  "+447309208633": {
+    "recording_file": "07309208633_20260407_13455932_user_fleto.mp3",
+    "transcript_file": "data/transcripts/447309208633.txt",
+    "assigned_date": "2026-04-16T07:15:00Z",
+    "assigned_by": "recording-assigner"
+  },
+  "+447449963996": {
+    "recording_file": "07449963996_20260407_12390721_user_dwallington.mp3",
+    "transcript_file": "data/transcripts/447449963996.txt",
+    "assigned_date": "2026-04-16T07:15:00Z",
+    "assigned_by": "recording-assigner"
+  },
+  "+447464819347": {
+    "recording_file": "07464819347_20260410_17114774_user_cbasbudak.mp3",
+    "transcript_file": "data/transcripts/447464819347.txt",
+    "assigned_date": "2026-04-16T07:15:00Z",
+    "assigned_by": "recording-assigner"
+  },
+  "+447517273510": {
+    "recording_file": "07517273510_20260408_09333819_user_blee.mp3",
+    "transcript_file": "data/transcripts/447517273510.txt",
+    "assigned_date": "2026-04-16T07:15:00Z",
+    "assigned_by": "recording-assigner"
+  },
+  "+447770044862": {
+    "recording_file": "07770044862_20260408_16482115_user_dwallington.mp3",
+    "transcript_file": "data/transcripts/447770044862.txt",
+    "assigned_date": "2026-04-16T07:15:00Z",
+    "assigned_by": "recording-assigner"
+  },
+  "+447791553991": {
+    "recording_file": "07791553991_20260408_10273189_user_fleto.mp3",
+    "transcript_file": "data/transcripts/447791553991.txt",
+    "assigned_date": "2026-04-16T07:15:00Z",
+    "assigned_by": "recording-assigner"
+  },
+  "+447825222427": {
+    "recording_file": "07825222427_20260407_15234018_user_dwallington.mp3",
+    "transcript_file": "data/transcripts/447825222427.txt",
+    "assigned_date": "2026-04-16T07:15:00Z",
+    "assigned_by": "recording-assigner"
+  },
+  "+447825628692": {
+    "recording_file": "07825628692_20260407_13055728_user_fleto.mp3",
+    "transcript_file": "data/transcripts/447825628692.txt",
+    "assigned_date": "2026-04-16T07:15:00Z",
+    "assigned_by": "recording-assigner"
+  },
+  "+447305211527": {
+    "recording_file": "07305211527_20260408_17115074_user_tndukwe.mp3",
+    "transcript_file": "data/transcripts/447305211527.txt",
+    "assigned_date": "2026-04-16T07:15:00Z",
+    "assigned_by": "recording-assigner"
+  },
+  "+447305749868": {
+    "recording_file": "07305749868_20260401_11342040_user_cdrake.mp3",
+    "transcript_file": "data/transcripts/447305749868.txt",
+    "assigned_date": "2026-04-16T07:15:00Z",
+    "assigned_by": "recording-assigner"
+  },
+  "+447443631810": {
+    "recording_file": "07443631810_20260401_16484243_user_cbasbudak.mp3",
+    "transcript_file": "data/transcripts/447443631810.txt",
+    "assigned_date": "2026-04-16T07:15:00Z",
+    "assigned_by": "recording-assigner"
+  },
+  "+447495508777": {
+    "recording_file": "07495508777_20260409_09424469_user_blee.mp3",
+    "transcript_file": "data/transcripts/447495508777.txt",
+    "assigned_date": "2026-04-16T07:15:00Z",
+    "assigned_by": "recording-assigner"
+  },
+  "+447526266445": {
+    "recording_file": "07526266445_20260402_10354692_user_cbasbudak.mp3",
+    "transcript_file": "data/transcripts/447526266445.txt",
+    "assigned_date": "2026-04-16T07:15:00Z",
+    "assigned_by": "recording-assigner"
+  },
+  "+447534930931": {
+    "recording_file": "07534930931_20260401_16100572_user_mchristian.mp3",
+    "transcript_file": "data/transcripts/447534930931.txt",
+    "assigned_date": "2026-04-16T07:15:00Z",
+    "assigned_by": "recording-assigner"
   }
 }
