@@ -9,9 +9,9 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
       - name: Download and unpack transcripts
         run: |
-          curl -sL "https://pub.hyperagent.com/api/published/ZC4CvAQyQNoJ90fTqFS-Zg/transcripts_bundle.json" -o bundle.json
+          curl -sL 'https://pub.hyperagent.com/api/published/ZC4CvAQyQNoJ90fTqFS-Zg/transcripts_bundle.json' -o bundle.json
           mkdir -p data/transcripts
-          python3 -c "
+          python3 << 'PYEOF'
           import json, os
           with open('bundle.json') as f:
               bundle = json.load(f)
@@ -21,13 +21,13 @@ jobs:
                   out.write(content)
               print(f'Created {path} ({len(content)} chars)')
           print(f'Total: {len(bundle)} transcripts')
-          "
+          PYEOF
       - name: Commit transcripts and self-delete
         run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git config user.name 'github-actions[bot]'
+          git config user.email 'github-actions[bot]@users.noreply.github.com'
           git add data/transcripts/
           git rm .github/workflows/commit_transcripts.yml
-          rm bundle.json
-          git commit -m "Add 15 transcripts via Recording Assigner (2026-04-16)"
+          rm -f bundle.json
+          git commit -m 'Add 15 transcripts via Recording Assigner (2026-04-16)'
           git push
