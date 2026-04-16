@@ -1,0 +1,37 @@
+name: Rename Transcripts
+on:
+  push:
+    paths: [".github/workflows/rename-transcripts.yml"]
+permissions:
+  contents: write
+jobs:
+  rename:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Rename files
+        run: |
+          git mv "data/transcripts/7538240818.txt" "data/transcripts/447538240818.txt"
+          git mv "data/transcripts/7568306075.txt" "data/transcripts/447568306075.txt"
+          git mv "data/transcripts/7708155586.txt" "data/transcripts/447708155586.txt"
+          git mv "data/transcripts/7717535224.txt" "data/transcripts/447717535224.txt"
+          git mv "data/transcripts/7756128504.txt" "data/transcripts/447756128504.txt"
+          git mv "data/transcripts/7757159031.txt" "data/transcripts/447757159031.txt"
+          git mv "data/transcripts/7776054669.txt" "data/transcripts/447776054669.txt"
+          git mv "data/transcripts/7777179576.txt" "data/transcripts/447777179576.txt"
+          git mv "data/transcripts/7778433372.txt" "data/transcripts/447778433372.txt"
+          git mv "data/transcripts/7788140010.txt" "data/transcripts/447788140010.txt"
+          git mv "data/transcripts/7846318555.txt" "data/transcripts/447846318555.txt"
+          git mv "data/transcripts/7944635501.txt" "data/transcripts/447944635501.txt"
+      - name: Commit
+        run: |
+          git config user.name "Marro Recording Bot"
+          git config user.email "bot@marro.ai"
+          git add data/transcripts/
+          git diff --staged --quiet || git commit -m "fix: rename transcripts to include 44 country code prefix"
+          git push
+      - name: Cleanup
+        run: |
+          git rm .github/workflows/rename-transcripts.yml
+          git commit -m "chore: remove rename workflow"
+          git push
