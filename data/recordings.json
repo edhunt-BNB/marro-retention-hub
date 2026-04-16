@@ -22,5 +22,11 @@
     "assigned_by": "recording-assigner",
     "ai_analysis": "https://edhunt-bnb.github.io/marro-retention-hub/data/reports/447856538368.html",
     "qa_score": 6.4
+  },
+  "+447833670173": {
+    "recording_file": "07833670173_20260408_11310333_user_tndukwe.mp3",
+    "transcript_file": "data/transcripts/447833670173.txt",
+    "assigned_date": "2026-04-16T06:15:00Z",
+    "assigned_by": "recording-assigner"
   }
 }
