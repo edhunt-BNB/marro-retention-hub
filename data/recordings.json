@@ -33,7 +33,9 @@
     "recording_file": "01519234229_20260410_10203034_user_blee.mp3",
     "transcript_file": "data/transcripts/441519234229.txt",
     "assigned_date": "2026-04-16T07:15:00Z",
-    "assigned_by": "recording-assigner"
+    "assigned_by": "recording-assigner",
+    "ai_analysis": "https://edhunt-bnb.github.io/marro-retention-hub/data/reports/441519234229.html",
+    "qa_score": 4.4
   },
   "+447309208633": {
     "recording_file": "07309208633_20260407_13455932_user_fleto.mp3",
